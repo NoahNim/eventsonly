@@ -1,3 +1,11 @@
-.profile-dropdown {
-  position: absolute;
+.navbar-container {
+  position: relative;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-between;
+  width: auto;
+  height: 70px;
+  align-items: center;
 }

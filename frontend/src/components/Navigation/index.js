@@ -10,6 +10,7 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
@@ -20,23 +21,21 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       // <ProfileButton user={sessionUser} />
-      <>
-        <button onClick={logout}>Log Out</button>
-      </>  
+      <nav className="navbar-container navbar-container-loggedin"><button onClick={logout}>Log Out</button></nav>
+        
     );
   } else {
     sessionLinks = (
-      <>
+      <nav className="navbar-container navbar-container-loggedout">
         <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      </nav>
     );
   }
 
   return (
     <ul>
       <li>
-        <NavLink exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
