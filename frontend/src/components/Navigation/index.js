@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LoginFormModal from '../LoginFormModal';

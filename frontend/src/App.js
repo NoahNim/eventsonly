@@ -5,7 +5,9 @@ import SignupFormPage from './components/SignupFormPage';
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
-import { Modal } from './context/Modal';
+// import { Modal } from './context/Modal';
+import Home from './components/Homepage'
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,6 +32,9 @@ function App() {
           </Route> */}
           <Route path='/signup'>
             <SignupFormPage />
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       )}
