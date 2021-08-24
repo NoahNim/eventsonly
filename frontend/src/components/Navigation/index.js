@@ -27,9 +27,11 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <nav className="navbar-container navbar-container-loggedout">
-        <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
-      </nav>
+        {/* <div > */}
+        <NavLink to="/events" className="nav-events">Events</NavLink>
+        <div className="nav-login"><LoginFormModal /></div>
+          <NavLink to="/signup" className="nav-signup">Sign Up</NavLink>
+       </nav>
     );
   }
 
