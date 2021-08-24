@@ -34,11 +34,9 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
+    <nav className="navbar-root">
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    </nav>
   );
 }
 
