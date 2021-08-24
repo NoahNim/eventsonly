@@ -27,7 +27,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <div>
       <nav className="navbar-container navbar-container-loggedout">
-        <div className="nav-events"><NavLink to="/events">Events Only</NavLink></div>
+          <div className="nav-events"><NavLink to="/events"><img alt="logo" src="https://prject-omega-events.s3.us-west-2.amazonaws.com/EventsSmall.png" width="50"></img></NavLink></div>
         <div className="nav-login"><LoginFormModal /></div>
           <NavLink to="/signup" className="nav-signup">Sign Up</NavLink>
         </nav>
