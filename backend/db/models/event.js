@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Event.belongsTo(models.User, { foreignKey: 'userId' })
+      Event.hasMany(models.Comment, { foreignKey: 'eventId', onDelete: 'cascade', hooks: true })
+      Event.hasMany(models.RSVP, { foreignKey: 'eventId', onDelete: 'cascade', hooks: true })
     }
   };
   Event.init({

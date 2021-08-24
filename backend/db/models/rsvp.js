@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      RSVP.belongsTo(models.User, { foreignKey: 'userId' })
+      RSVP.belongsTo(models.Event, { foreignKey: 'eventId' })
     }
   };
   RSVP.init({
