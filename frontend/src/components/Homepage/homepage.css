@@ -1,0 +1,13 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 650px;
+    margin-right: 650px;
+}
