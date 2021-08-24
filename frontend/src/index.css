@@ -10,3 +10,8 @@ a {
 }
 
 a:visited { text-decoration: none; color:black; }
+
+.login-button {
+     background-color: rgb(171, 208, 243);
+     border: none;
+}
