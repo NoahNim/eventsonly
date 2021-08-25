@@ -1,7 +1,13 @@
 import React from 'react';
 import './homepage.css'
+import { Redirect } from 'react-router';
+import { useSelector } from 'react-redux';
 
 function Home() {
+    const sessionUser = useSelector((state) => state.session.user);
+
+    if (sessionUser) return <Redirect to="/events" />;
+
     return (
         <dive className="home-container">
             <div className="logo-container">
