@@ -9,12 +9,13 @@
 .navbar-root {
     width: 100%;
     position: relative;
-    background-color: rgb(0, 132, 255);
+    /* background-color: rgb(0, 132, 255); */
+     background-color: rgb(151, 199, 241);
     top: 0;
     left: 0;
     right: 0;
     height: 70%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .nav-signup {
@@ -31,7 +32,8 @@
 }
 
 .logout-button {
-     background-color: rgb(0, 132, 255);
+     /* background-color: rgb(0, 132, 255); */
+      background-color: rgb(151, 199, 241);
      border: none;
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
      font-size: 16px;
