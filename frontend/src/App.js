@@ -30,10 +30,10 @@ function App() {
           {/* <Route path="/login" >
             <LoginFormPage />
           </Route> */}
-          <Route path='/signup'>
+          <Route path='/signup' exact>
             <SignupFormPage />
           </Route>
-          <Route path="/">
+          <Route path="/" exact>
             <Home />
           </Route>
         </Switch>

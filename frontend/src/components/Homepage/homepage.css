@@ -3,18 +3,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
-.homepage-container {
+.logo-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 650px;
-    margin-right: 650px;
+    /* margin-left: 500px; */
 }
 
 .logo-home {
     justify-content: center;
-    margin-left: 50px;
-    margin-right: 50px;
+    /* margin-left: 30px;
+    margin-right: 50px; */
+}
+
+.home-info {
+    width: 50%;
 }
