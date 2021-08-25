@@ -21,3 +21,10 @@ a:visited { text-decoration: none; color:black; }
      font-size: 16px;
      color: black;
 }
+
+label {
+    padding-top: 50px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    font-weight: 200;
+}
