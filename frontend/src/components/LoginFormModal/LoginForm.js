@@ -21,23 +21,25 @@ function LoginForm() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <form className="login-form"onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <div>
         <label>
-          Username or Email
+          Email
           <input
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
-        </label>
+          </label>
+        </div>
+        <div>
         <label>
           Password
           <input
@@ -47,9 +49,10 @@ function LoginForm() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        </div>
+        <button className="login-button-login" type="submit">Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 

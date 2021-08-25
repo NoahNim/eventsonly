@@ -5,8 +5,10 @@
   left: 0;
   bottom: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
 }
 
 #modal-background {
@@ -21,4 +23,11 @@
 #modal-content {
   position: absolute;
   background-color:white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  width: 30%;
+  height: 30%;
+  border-radius: 10px;
 }
