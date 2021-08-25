@@ -8,6 +8,7 @@
     align-items: center;
     color: black;
     /* margin-top: 120px; */
+    margin-left: 45px;
 }
 
 .login-form {
@@ -16,8 +17,8 @@
     align-items: center;
     width: 200px;
     border-radius: 10px;
-    padding: 32px;
-    margin-bottom: 100px;
+    /* padding-right: 50px; */
+    margin-top: 25px;
 }
 
 label {
@@ -28,8 +29,8 @@ label {
 }
 
 .login-button-login {
-  margin-top: 10px;
-  margin-right: 20px;
+  margin-top: 20px;
+  margin-right: 45px;
   background-color: rgb(151, 199, 241);
   border: none;
 }
