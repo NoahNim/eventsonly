@@ -14,7 +14,7 @@ function SignupFormPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [biography, setBiography] = useState("");
-  const [profilePhoto, setPProfilePhoto] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/events" />;
@@ -23,7 +23,8 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      console.log(firstName)
+      return dispatch(sessionActions.signup({ email, username, password, firstName, lastName, biography, profilePhoto }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -56,6 +57,42 @@ function SignupFormPage() {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <label className="signup-label">
+            First Name
+          </label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+          <label className="signup-label">
+            Last Name
+          </label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+          <label className="signup-label">
+            Biography
+          </label>
+          <textarea
+            type="text"
+            value={biography}
+            onChange={(e) => setBiography(e.target.value)}
+            required
+          ></textarea>
+          <label className="signup-label">
+            Profile Photo URL
+          </label>
+          <input
+            type="text"
+            value={profilePhoto}
+            onChange={(e) => setProfilePhoto(e.target.value)}
             required
           />
           <label className="signup-label">
