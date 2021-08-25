@@ -5,7 +5,9 @@ import SignupFormPage from './components/SignupFormPage';
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
-import { Modal } from './context/Modal';
+// import { Modal } from './context/Modal';
+import Home from './components/Homepage'
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,19 +19,22 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <button onClick={() => setShowModal(true)}>Modal</button>
-      {showModal && (
+      {/* <button onClick={() => setShowModal(true)}>Modal</button> */}
+      {/* {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <h1>Hello I am a Modal</h1>
         </Modal>
-      )}
+      )} */}
       {isLoaded && (
         <Switch>
           {/* <Route path="/login" >
             <LoginFormPage />
           </Route> */}
-          <Route path='/signup'>
+          <Route path='/signup' exact>
             <SignupFormPage />
+          </Route>
+          <Route path="/" exact>
+            <Home />
           </Route>
         </Switch>
       )}
