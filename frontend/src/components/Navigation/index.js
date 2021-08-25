@@ -20,7 +20,10 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       // <ProfileButton user={sessionUser} />
-      <nav className="navbar-container navbar-container-loggedin"><button onClick={logout}>Log Out</button></nav>
+      <nav className="navbar-container navbar-container-loggedin">
+        <div className="nav-events"><NavLink to="/events"><img alt="logo" src="https://prject-omega-events.s3.us-west-2.amazonaws.com/EventsSmall.png" width="50"></img></NavLink></div>
+        <button className="logout-button" onClick={logout}>Log Out</button>
+      </nav>
         
     );
   } else {
