@@ -22,7 +22,6 @@ function LoginForm() {
 
   return (
     <div className="login-container">
-      <h1>Log In</h1>
       <form className="login-form"onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -31,7 +30,7 @@ function LoginForm() {
         </ul>
         <div>
         <label>
-          Username or Email
+          Email
           <input
             type="text"
             value={credential}
@@ -51,7 +50,7 @@ function LoginForm() {
           />
         </label>
         </div>
-        <button type="submit">Log In</button>
+        <button className="login-button-login" type="submit">Log In</button>
       </form>
     </div>
   );
