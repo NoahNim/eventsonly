@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom'
 import { getEvents } from "../../store/event";
 
 function EventsManager() {
@@ -18,17 +19,20 @@ function EventsManager() {
 
     return (
         <div>
+            <div><Link to="/events/new"><button>New Event</button></Link></div>
+            <div>
             <ul>
                 {
                     eventsArray?.map(event => {
                         return (
                             <div>
-                                <img alt="eventPhoto" src={event.eventPhoto} height="250" width="250"></img>
+                                <Link to={`/events/${event.id}`}> <img alt="eventPhoto" src={event.eventPhoto} height="250" width="250"></img></Link>
                             </div>
                         )
                     })
                 }
-            </ul>
+                </ul>
+            </div>
         </div>
     )
 }
