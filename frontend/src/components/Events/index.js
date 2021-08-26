@@ -10,4 +10,8 @@ function EventsManager() {
     useEffect(() => {
         dispatch(getEvents())
     }, [dispatch])
+
+    return null
 }
+
+export default EventsManager

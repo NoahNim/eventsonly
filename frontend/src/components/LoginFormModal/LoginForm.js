@@ -18,7 +18,7 @@ function LoginForm() {
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
-        const data = await res.json();
+        const data = await res?.json();
         if (data && data.errors) setErrors(data.errors);
       }
     );
@@ -30,7 +30,7 @@ function LoginForm() {
     const password = "password";
     return dispatch(sessionActions.login({ 'credential': demo, password })).catch(
       async (res) => {
-        const data = await res.json();
+        const data = await res?.json();
         if (data && data.errors) setErrors(data.errors);
       }
     );

@@ -10,9 +10,7 @@ const router = express.Router();
 
 // Get events
 router.get("/", asyncHandler(async (req, res) => {
-    const events = await Event.findAll({
-        include: db.User
-    })
+    const events = await Event.findAll({})
 
     return res.json({ events })
 }))
