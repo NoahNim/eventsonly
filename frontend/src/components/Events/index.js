@@ -4,6 +4,10 @@ import { getEvents } from "../../store/event";
 
 function EventsManager() {
     const sessionUser = useSelector((state) => state.session.user);
+    const dispatch = useDispatch();
+    const events = useSelector((state) => state.events)
 
-    
+    useEffect(() => {
+        dispatch(getEvents())
+    }, [dispatch])
 }

@@ -16,3 +16,5 @@ router.get("/", asyncHandler(async (req, res) => {
 
     return res.json({ events })
 }))
+
+module.exports = router;
