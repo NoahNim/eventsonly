@@ -32,7 +32,7 @@ const remove = (event) => ({
 //THUNKS
 
 //Get events thunk
-const getEvents = () => async (dispatch) => {
+export const getEvents = () => async (dispatch) => {
     const res = await fetch("/api/events/");
 
     if (res.ok) {
@@ -46,5 +46,17 @@ const getEvents = () => async (dispatch) => {
 const initialState = {}
 
 const eventsReducer = (state = initialState, action) => {
-
+    switch (action.type) {
+        case LOAD:
+            const allEvents = {}
+            action.event.forEach((event) => (allEvents[event.id] = event))
+            return {
+                ...allEvents,
+                ...state
+            }
+        default:
+            return state;
+    }
 }
+
+export default eventsReducer
