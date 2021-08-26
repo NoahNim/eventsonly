@@ -29,7 +29,21 @@ router.get("/", requireAuth, asyncHandler(async (req, res) => {
 
 //Create event
 router.post("/new", asyncHandler(async (req, res) => {
+    let userId = req.user.id
     
+    const { name, description, date, eventPhoto } = req.body;
+
+    const event = await Event.build({
+        name,
+        description,
+        date,
+        eventPhoto,
+        userId
+    })
+
+    await event.save();
+
+    return res.json({ events: event })
 }))
 
 module.exports = router;
