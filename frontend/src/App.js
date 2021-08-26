@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 // import { Modal } from './context/Modal';
 import Home from './components/Homepage'
 import EventsManager from './components/Events';
+import CreateEvent from './components/Events/NewEvent';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,10 @@ function App() {
           <Route path="/events" exact>
             <EventsManager />
           </Route>
+          <Route path="/events/new" exact>
+            <CreateEvent />
+          </Route>
+
         </Switch>
       )}
     </>
