@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router";
 import "./LoginForm.css";
 
 function LoginForm() {
@@ -8,6 +9,9 @@ function LoginForm() {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const sessionUser = useSelector((state) => state.session.user);
+
+  if (sessionUser) return <Redirect to="/events" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,33 +26,33 @@ function LoginForm() {
 
   return (
     <div className="login-container">
-      <form className="login-form"onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
         <div>
-        <label>
-          Email
+          <label>
+            Email
+          </label>
           <input
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
-          </label>
         </div>
         <div>
-        <label>
-          Password
+          <label>
+            Password
+          </label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
         </div>
         <button className="login-button-login" type="submit">Log In</button>
       </form>

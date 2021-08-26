@@ -11,15 +11,20 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [biography, setBiography] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/events" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      console.log(firstName)
+      return dispatch(sessionActions.signup({ email, username, password, firstName, lastName, biography, profilePhoto }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -30,49 +35,87 @@ function SignupFormPage() {
 
   return (
     <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <label>
-          Email
+      <div className="signup-container">
+        <h1>Sign Up</h1>
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <ul className="signup-errors">
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <label className="signup-label email-signup">
+            Email
+          </label>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Username
+          <label className="signup-label">
+            Username
+          </label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password
+          <label className="signup-label">
+            First Name
+          </label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+          <label className="signup-label">
+            Last Name
+          </label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+          <label className="signup-label">
+            Biography
+          </label>
+          <textarea
+            type="text"
+            value={biography}
+            onChange={(e) => setBiography(e.target.value)}
+            required
+          ></textarea>
+          <label className="signup-label">
+            Profile Photo URL
+          </label>
+          <input
+            type="text"
+            value={profilePhoto}
+            onChange={(e) => setProfilePhoto(e.target.value)}
+            required
+          />
+          <label className="signup-label">
+            Password
+          </label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Confirm Password
+          <label className="signup-label confirm-pass">
+            Confirm Password
+          </label>
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
+          <button className="signup-button" type="submit">Sign Up</button>
+        </form>
+      </div>
     </>
   );
 }

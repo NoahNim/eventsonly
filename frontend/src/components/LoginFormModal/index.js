@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
 import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import { useSelector } from 'react-redux';
 
 function LoginFormModal() {
   const [showModal, setShowModal] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
+
+  if (sessionUser) return <Redirect to="/events" />;
 
   return (
     <>

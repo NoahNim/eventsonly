@@ -34,7 +34,7 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: true
       },
-      profilePhot: {
+      profilePhoto: {
         type: Sequelize.STRING(7000),
         allowNull: true,
         unique: true,
