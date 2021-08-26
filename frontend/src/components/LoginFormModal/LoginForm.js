@@ -24,6 +24,18 @@ function LoginForm() {
     );
   };
 
+  const demoLogin = () => {
+    setErrors([]);
+    const demo = "Demo-lition";
+    const password = "password";
+    return dispatch(sessionActions.login({ 'credential': demo, password })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
+  }
+
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
@@ -34,7 +46,7 @@ function LoginForm() {
         </ul>
         <div>
           <label>
-            Email
+            Email/Username
           </label>
           <input
             type="text"
@@ -55,6 +67,7 @@ function LoginForm() {
           />
         </div>
         <button className="login-button-login" type="submit">Log In</button>
+        <button className="login-button-login" type="button" onClick={demoLogin}>Demo User</button>
       </form>
     </div>
   );
