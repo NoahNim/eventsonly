@@ -50,7 +50,7 @@ const events = (state = initialState, action) => {
         case LOAD:
             const allEvents = {}
             action.event.forEach((event) => ( allEvents[event.id] = event ))
-            console.log(allEvents)
+            // console.log(allEvents)
             return {
                 ...allEvents,
                 ...state
