@@ -21,24 +21,24 @@ const validateCreateEvent = [
 ]
 
 // Get events
-router.get("/", requireAuth, asyncHandler(async (req, res) => {
+router.get("/", asyncHandler(async (req, res) => {
     const events = await Event.findAll({})
 
     return res.json({ events })
 }))
 
 //Create event
-router.post("/new", asyncHandler(async (req, res) => {
+router.post("/new", requireAuth, asyncHandler(async (req, res) => {
     let userId = req.user.id
     
     const { name, description, date, eventPhoto } = req.body;
 
     const event = await Event.build({
+        userId,
         name,
         description,
         date,
         eventPhoto,
-        userId
     })
 
     await event.save();
