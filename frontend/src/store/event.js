@@ -29,3 +29,22 @@ const remove = (event) => ({
     event
 })
 
+//THUNKS
+
+//Get events thunk
+const getEvents = () => async (dispatch) => {
+    const res = await fetch("/api/events/");
+
+    if (res.ok) {
+        const data = await res.json();
+
+        const { events } = data;
+        dispatch(load(events));
+    }
+}
+
+const initialState = {}
+
+const eventsReducer = (state = initialState, action) => {
+
+}
