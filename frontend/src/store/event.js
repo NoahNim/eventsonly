@@ -45,11 +45,12 @@ export const getEvents = () => async (dispatch) => {
 
 const initialState = {}
 
-const eventsReducer = (state = initialState, action) => {
+const events = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             const allEvents = {}
-            action.event.forEach((event) => (allEvents[event.id] = event))
+            action.event.forEach((event) => ( allEvents[event.id] = event ))
+            console.log(allEvents)
             return {
                 ...allEvents,
                 ...state
@@ -59,4 +60,4 @@ const eventsReducer = (state = initialState, action) => {
     }
 }
 
-export default eventsReducer
+export default events
