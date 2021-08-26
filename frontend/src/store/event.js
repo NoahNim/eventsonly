@@ -12,7 +12,7 @@ const load = (event) => ({
 })
 
 //ADD Event
-const add =  (event) => ({
+const add = (event) => ({
     type: ADD,
     event
 })
@@ -20,7 +20,7 @@ const add =  (event) => ({
 //EDIT Event
 const edit = (event) => ({
     type: EDIT.
-    event
+        event
 })
 
 // REMOVE Event
@@ -43,13 +43,30 @@ export const getEvents = () => async (dispatch) => {
     }
 }
 
+//Create an event
+
+export const createEvent = (eventData) => async (dispatch) => {
+    const res = await fetch("/api/events/new/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(eventData)
+    })
+
+    if (res.ok) {
+        const event = await res.json();
+        dispatch(add(event));
+    }
+}
+
 const initialState = {}
 
 const events = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             const allEvents = {}
-            action.event.forEach((event) => ( allEvents[event.id] = event ))
+            action.event.forEach((event) => (allEvents[event.id] = event))
             // console.log(allEvents)
             return {
                 ...allEvents,
