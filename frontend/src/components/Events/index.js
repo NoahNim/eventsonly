@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { getEvents } from "../../store/event";
 
 function EventsManager() {
-    const sessionUser = useSelector((state) => state.session.user);
+    // const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
     const events = useSelector((state) => state?.events);
     const eventsArray = Object.values(events);
@@ -26,7 +26,7 @@ function EventsManager() {
                     eventsArray?.map(event => {
                         return (
                             <div>
-                                <Link to={`/events/${event.id}`}> <img alt="eventPhoto" src={event.eventPhoto} height="250" width="250"></img></Link>
+                                <Link to={`/events/${event?.id}`}> <img alt="eventPhoto" src={event?.eventPhoto} height="250" width="250"></img></Link>
                             </div>
                         )
                     })

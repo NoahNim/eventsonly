@@ -76,10 +76,14 @@ const events = (state = initialState, action) => {
                 ...state
             }
         case ADD:
-            return {
-                ...state,
-                ...action.event
-          }
+            if (!state[action.event.id]) {
+                const newState = {
+                    ...state,
+                    [action.event.id]: action.event.id
+                }
+                return { ...newState }
+            }
+            break;
         default:
             return state;
     }
