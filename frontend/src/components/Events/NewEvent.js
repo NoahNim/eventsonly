@@ -12,9 +12,10 @@ function CreateEvent() {
     const [date, setDate] = useState("");
     const [eventPhoto, setEventPhoto] = useState("");
     const [errors, setErrors] = useState([]);
-    const eventState = useSelector((state) => state.events)
-
+    // const eventState = useSelector((state) => state.events)
     const sessionUser = useSelector((state) => state.session.user);
+
+    if (!sessionUser) return <Redirect to="/events" />;
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -31,13 +32,16 @@ function CreateEvent() {
             userId
         }
 
-        const event = await dispatch(createEvent(payload))
+        const eventSubmit = await dispatch(createEvent(payload))
             .catch(async (res) => {
                 const data = await res?.json();
                 setErrors(data?.errors);
             });
-        if (event) {
-            return (<Redirect to="/events" />)
+        
+        console.log(eventSubmit)
+        
+        if (eventSubmit) {
+            return <Redirect to="/events" />
         }
     }
 
