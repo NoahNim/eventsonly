@@ -20,10 +20,10 @@ const add = (event) => ({
 })
 
 //EDIT Event
-const edit = (event) => ({
-    type: EDIT.
-        event
-})
+// const edit = (event) => ({
+//     type: EDIT.
+//         event
+// })
 
 // REMOVE Event
 const remove = (event) => ({
@@ -62,6 +62,23 @@ export const createEvent = (eventData) => async (dispatch) => {
         return dispatch(add(event));
     }
 }
+
+//Edit Event
+export const editEvent = (id, eventData) => async (dispatch) => {
+    const res = await csrfFetch("/api/events/new/", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(id, eventData)
+    })
+
+    if (res.ok) {
+        const event = await res.json();
+        return dispatch(add(event));
+    }
+}
+
 
 const initialState = {}
 
