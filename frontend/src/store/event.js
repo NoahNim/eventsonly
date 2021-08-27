@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 // TYPE CONSTANTS
 const LOAD = "events/load";
+// const LOADEVENT = "events/loadevent"
 const ADD = "events/add";
 const EDIT = "events/edit";
 const REMOVE = "events/remove";
@@ -31,6 +32,12 @@ const remove = (event) => ({
     event
 })
 
+//LOAD Event
+// const loadevent = (eventId) => ({
+//     type: LOADEVENT,
+//     eventId
+// })
+
 //THUNKS
 
 //Get events thunk
@@ -41,9 +48,24 @@ export const getEvents = () => async (dispatch) => {
         const data = await res.json();
 
         const { events } = data;
-        dispatch(load(events));
+       return dispatch(load(events));
     }
 }
+
+//Get event thunk
+// export const getEvent = (id) => async (dispatch) => {
+//     const res = await fetch(`/api/events/${id}/`);
+
+//     console.log('RES IN GET EVENT', res)
+
+//     if (res.ok) {
+//         const data = await res.json();
+//         console.log('DATA IN GET EVENT THUNK', data)
+
+//         const { event } = data;
+//         return dispatch(loadevent(event));
+//     }
+// }
 
 //Create an event
 
