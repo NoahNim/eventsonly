@@ -57,7 +57,6 @@ export const getEvents = () => async (dispatch) => {
 //     const res = await fetch(`/api/events/${id}/`);
 
 //     console.log('RES IN GET EVENT', res)
-
 //     if (res.ok) {
 //         const data = await res.json();
 //         console.log('DATA IN GET EVENT THUNK', data)
@@ -102,19 +101,33 @@ export const editEvent = (id, eventData) => async (dispatch) => {
     }
 }
 
+//Delete Event
+export const deleteEvent = (id) => async (dispatch) => {
+    const eventRes = await csrfFetch(`/api/events/${id}/`);
+    const event = await eventRes.json();
+
+    const res = await csrfFetch(`/api/events/${id}/delete/`, {
+        method: 'DELETE'
+    });
+
+    if (res.ok) {
+        dispatch(remove(event));
+    }
+}
+
 
 const initialState = {}
 
 const events = (state = initialState, action) => {
     switch (action.type) {
-        case LOAD:
+     case LOAD:
             const allEvents = {}
             action.event.forEach((event) => (allEvents[event.id] = event))
             // console.log(allEvents)
             return {
                 ...allEvents,
                 ...state
-            }
+            }   
         case ADD:
             if (!state[action.event.id]) {
                 const newState = {
