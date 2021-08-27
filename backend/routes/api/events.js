@@ -59,7 +59,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 }))
 
 //Edit event
-router.put('/:id(\\d+)/edit', requireAuth, validateCreateEvent, asyncHandler((req, res) => {
+router.put('/:id(\\d+)/edit', requireAuth, validateCreateEvent, asyncHandler( async (req, res) => {
     let eventId = req.params.id;
     let userId = req.user.id;
     const event = await Event.findByPk(eventId);

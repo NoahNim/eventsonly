@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 import Home from './components/Homepage'
 import EventsManager from './components/Events';
 import CreateEvent from './components/Events/NewEvent';
+import Event from './components/Events/Event';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +45,9 @@ function App() {
           <Route path="/events/new" exact>
             <CreateEvent />
           </Route>
-
+          <Route path="/events/:id" exact>
+            <Event />
+          </Route>
         </Switch>
       )}
     </>
