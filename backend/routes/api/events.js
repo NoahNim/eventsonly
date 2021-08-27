@@ -3,7 +3,7 @@ const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { Event, db } = require("../../db/models");
+const { Event, User } = require("../../db/models");
 
 const router = express.Router();
 
@@ -46,6 +46,16 @@ router.post("/new", requireAuth, validateCreateEvent, asyncHandler(async (req, r
     // console.log(event)
 
     return res.json({ events: event })
+}))
+
+//Get Event
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+    eventId = req.params.id;
+
+    const event = Event.findByPk(eventId, {
+        include: User
+    })
+    return res.json({ event })
 }))
 
 //Edit event
