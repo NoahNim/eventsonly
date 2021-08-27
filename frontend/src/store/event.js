@@ -141,7 +141,10 @@ const events = (state = initialState, action) => {
             const newState = {
                 ...state
             }
-            return newState 
+            return newState
+        case REMOVE:
+            delete newState[action.event.id]
+            return newState
         default:
             return state;
     }

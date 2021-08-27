@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from 'react-router-dom';
-import { getEvents } from '../../store/event';
+import { getEvents, deleteEvent } from '../../store/event';
 
 function Event() {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
     const events = useSelector((state) => state?.events);
     const eventsArray = Object.values(events);
 
@@ -17,6 +18,13 @@ function Event() {
     console.log(eventsArray);
 
     console.log('params id', id)
+
+    const deleteEvent = async () => {
+        const eventId = Number(id)
+        await dispatch(deleteEvent(eventId))
+
+        return history.push('/events')
+    }
 
     return (
         <div>
@@ -30,7 +38,7 @@ function Event() {
                                 <li>{event?.description}</li>
                                 <li>{event?.date}</li>
                                 <Link to={`/events/${event.id}/edit`}><button>Edit</button></Link>
-                                <button>Delete</button>
+                                <button onClick={deleteEvent}>Delete</button>
                             </div>
                         )
                     }
