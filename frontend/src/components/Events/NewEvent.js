@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
+import { createEvent } from '../../store/event';
+import { Redirect } from 'react-router';
 
 function CreateEvent() {
     const dispatch = useDispatch();
@@ -9,17 +11,48 @@ function CreateEvent() {
     const [description, setDescription] = useState("");
     const [date, setDate] = useState(new Date());
     const [eventPhoto, setEventPhoto] = useState("");
+    const [errors, setErrors] = useState([]);
 
     const sessionUser = useSelector((state) => state.session.user);
-    console.log('THIS IS THE USER ID', sessionUser.id)
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
 
+        setErrors([]);
+
+        const userId = sessionUser.id
+
+        const payload = {
+            name,
+            description,
+            date,
+            eventPhoto,
+            userId
+        }
+
+        const event = await dispatch(createEvent(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                setErrors(data.errors);
+            });
+        
+        // if (event) {
+        //     const data = await event.json()
+            // return <Redirect to="/events" />;
+        // }
+        return history.push("/events")
+    }
 
     if (sessionUser) {
         return (
             <div>
-            <form>
-                <label>Event Name</label>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <ul>
+                            {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
+                        </ul>
+                    </div>
+                    <label>Event Name</label>
                     <input
                         type="test"
                         value={name}
@@ -40,6 +73,16 @@ function CreateEvent() {
                         onChange={(e) => setDate(e.target.value)}
                     >
                     </input>
+                    <label className="signup-label">
+                        Profile Photo URL
+                    </label>
+                    <input
+                        type="text"
+                        value={eventPhoto}
+                        onChange={(e) => setEventPhoto(e.target.value)}
+                        required
+                    />
+                    <button type="submit">Create</button>
                 </form>
             </div>
         )
