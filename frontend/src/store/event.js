@@ -132,9 +132,9 @@ const events = (state = initialState, action) => {
             if (!state[action.event.id]) {
                 const newState = {
                     ...state,
-                    [action.event.id]: action.event.id
+                    // [action.event.id]: action.event.id
                 }
-                return { ...newState }
+                return newState
             }
             break;
         case EDIT:
@@ -143,7 +143,7 @@ const events = (state = initialState, action) => {
             }
             return newState
         case REMOVE:
-            delete newState[action.event.id]
+            delete action.event
             return newState
         default:
             return state;
