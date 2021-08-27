@@ -12,6 +12,7 @@ function CreateEvent() {
     const [date, setDate] = useState("");
     const [eventPhoto, setEventPhoto] = useState("");
     const [errors, setErrors] = useState([]);
+    const eventState = useSelector((state) => state.events)
 
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -35,10 +36,8 @@ function CreateEvent() {
                 const data = await res?.json();
                 setErrors(data?.errors);
             });
-        const data = await event?.json()
-        console.log(data)
-        if (data) {
-            return <Redirect to="/events" />;
+        if (event) {
+            return (<Redirect to="/events" />)
         }
     }
 
