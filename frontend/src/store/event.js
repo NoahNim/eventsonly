@@ -58,6 +58,7 @@ export const createEvent = (eventData) => async (dispatch) => {
 
     if (res.ok) {
         const event = await res.json();
+        console.log('EVENT IN THUNK', event)
         dispatch(add(event));
     }
 }
@@ -74,6 +75,11 @@ const events = (state = initialState, action) => {
                 ...allEvents,
                 ...state
             }
+        case ADD:
+            return {
+                ...state,
+                ...action.event
+          }
         default:
             return state;
     }

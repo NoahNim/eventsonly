@@ -28,7 +28,7 @@ router.get("/", asyncHandler(async (req, res) => {
 }))
 
 //Create event
-router.post("/new", requireAuth, asyncHandler(async (req, res) => {
+router.post("/new", requireAuth, validateCreateEvent, asyncHandler(async (req, res) => {
     let userId = req.user.id
     
     const { name, description, date, eventPhoto } = req.body;
@@ -42,6 +42,8 @@ router.post("/new", requireAuth, asyncHandler(async (req, res) => {
     })
 
     await event.save();
+
+    // console.log(event)
 
     return res.json({ events: event })
 }))

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { createEvent } from '../../store/event';
 import { Redirect } from 'react-router';
 
 function CreateEvent() {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState("");
     const [eventPhoto, setEventPhoto] = useState("");
     const [errors, setErrors] = useState([]);
 
@@ -32,15 +32,14 @@ function CreateEvent() {
 
         const event = await dispatch(createEvent(payload))
             .catch(async (res) => {
-                const data = await res.json();
-                setErrors(data.errors);
+                const data = await res?.json();
+                setErrors(data?.errors);
             });
-        
-        // if (event) {
-        //     const data = await event.json()
-            // return <Redirect to="/events" />;
-        // }
-        return history.push("/events")
+        const data = await event?.json()
+        console.log(data)
+        if (data) {
+            return <Redirect to="/events" />;
+        }
     }
 
     if (sessionUser) {
@@ -57,7 +56,7 @@ function CreateEvent() {
                         type="test"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        required
+                        // required
                     ></input>
                     <label>Description</label>
                     <textarea
@@ -80,7 +79,7 @@ function CreateEvent() {
                         type="text"
                         value={eventPhoto}
                         onChange={(e) => setEventPhoto(e.target.value)}
-                        required
+                        // required
                     />
                     <button type="submit">Create</button>
                 </form>
