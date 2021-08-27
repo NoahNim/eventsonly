@@ -30,6 +30,7 @@ function Event() {
                                 <li>{event?.description}</li>
                                 <li>{event?.date}</li>
                                 <Link to={`/events/${event.id}/edit`}><button>Edit</button></Link>
+                                <button>Delete</button>
                             </div>
                         )
                     }

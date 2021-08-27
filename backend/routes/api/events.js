@@ -79,4 +79,13 @@ router.put('/:id(\\d+)/edit', requireAuth, validateCreateEvent, asyncHandler( as
     return res.json({ event })
 }))
 
+//Delete event
+router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    let eventId = req.params.id;
+    const event = await Event.findByPk(eventId);
+
+    await event.destroy()
+    return res.json();
+} ))
+
 module.exports = router;
