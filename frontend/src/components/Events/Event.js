@@ -19,10 +19,10 @@ function Event() {
 
     console.log('params id', id)
 
-    const deleteEvent = async () => {
+    const deleteEvent = async (id) => {
         await dispatch(deleteEvent(id))
 
-        history.push('/events')
+        return history.push('/events')
     }
 
     return (
