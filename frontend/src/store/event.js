@@ -23,7 +23,7 @@ const add = (event) => ({
 //EDIT Event
 const edit = (event) => ({
     type: EDIT,
-        event
+    event
 })
 
 // REMOVE Event
@@ -48,7 +48,7 @@ export const getEvents = () => async (dispatch) => {
         const data = await res.json();
 
         const { events } = data;
-       return dispatch(load(events));
+        return dispatch(load(events));
     }
 }
 
@@ -106,7 +106,7 @@ export const deleteEvent = (id) => async (dispatch) => {
     const eventRes = await csrfFetch(`/api/events/${id}/`);
     const event = await eventRes.json();
 
-    const res = await csrfFetch(`/api/events/${id}/delete/`, {
+    const res = await csrfFetch(`/api/events/${id}/`, {
         method: 'DELETE'
     });
 
@@ -120,14 +120,14 @@ const initialState = {}
 
 const events = (state = initialState, action) => {
     switch (action.type) {
-     case LOAD:
+        case LOAD:
             const allEvents = {}
             action.event.forEach((event) => (allEvents[event.id] = event))
             // console.log(allEvents)
             return {
                 ...allEvents,
                 ...state
-            }   
+            }
         case ADD:
             if (!state[action.event.id]) {
                 const newState = {
@@ -143,8 +143,9 @@ const events = (state = initialState, action) => {
             }
             return newState
         case REMOVE:
-            delete action.event
-            return newState
+            const newerState = { ...state }
+            delete newerState[action.event.id]
+            return newerState
         default:
             return state;
     }
