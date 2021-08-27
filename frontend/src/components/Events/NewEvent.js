@@ -89,8 +89,6 @@ function CreateEvent() {
             </div>
         )
     }
-
-    return null
 }
 
 export default CreateEvent

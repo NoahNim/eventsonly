@@ -66,13 +66,13 @@ router.put('/:id(\\d+)/edit', requireAuth, validateCreateEvent, asyncHandler( as
 
     const { name, description, date, eventPhoto } = req.body;
     
-    const updatedEvent = await Event.build({
+    const updatedEvent = {
         userId,
         name,
         description,
         date,
         eventPhoto,
-    })
+    }
 
     await event.update(updatedEvent);
 
