@@ -48,4 +48,25 @@ router.post("/new", requireAuth, validateCreateEvent, asyncHandler(async (req, r
     return res.json({ events: event })
 }))
 
+//Edit event
+router.put('/:id(\\d+)/edit', requireAuth, validateCreateEvent, asyncHandler((req, res) => {
+    let eventId = req.params.id;
+    let userId = req.user.id;
+    const event = await Event.findByPk(eventId);
+
+    const { name, description, date, eventPhoto } = req.body;
+    
+    const updatedEvent = await Event.build({
+        userId,
+        name,
+        description,
+        date,
+        eventPhoto,
+    })
+
+    await event.update(updatedEvent);
+
+    return res.json({ event })
+}))
+
 module.exports = router;
