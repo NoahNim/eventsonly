@@ -98,7 +98,7 @@ export const editEvent = (id, eventData) => async (dispatch) => {
 
     if (res.ok) {
         const event = await res.json();
-        return dispatch(add(event));
+        return dispatch(edit(event));
     }
 }
 
@@ -124,6 +124,11 @@ const events = (state = initialState, action) => {
                 return { ...newState }
             }
             break;
+        case EDIT:
+            const newState = {
+                ...state
+            }
+            return newState 
         default:
             return state;
     }
