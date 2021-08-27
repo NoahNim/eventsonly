@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { createEvent } from '../../store/event';
 import { Redirect } from 'react-router';
 
 function CreateEvent() {
     const dispatch = useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [date, setDate] = useState("");
     const [eventPhoto, setEventPhoto] = useState("");
     const [errors, setErrors] = useState([]);
-    // const eventState = useSelector((state) => state.events)
     const sessionUser = useSelector((state) => state.session.user);
 
     if (!sessionUser) return <Redirect to="/events" />;
@@ -41,7 +40,8 @@ function CreateEvent() {
         console.log(eventSubmit)
         
         if (eventSubmit) {
-            return <Redirect to="/events" />
+            console.log('EVENT SUBMIT IN IF', eventSubmit)
+            history.push('/events')
         }
     }
 
