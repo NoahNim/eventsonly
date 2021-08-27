@@ -10,6 +10,7 @@ import Home from './components/Homepage'
 import EventsManager from './components/Events';
 import CreateEvent from './components/Events/NewEvent';
 import Event from './components/Events/Event';
+import EditEvent from './components/Events/editEvent';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route path="/events/:id" exact>
             <Event />
+          </Route>
+          <Route path="/events/:id/edit" exact>
+            <EditEvent />
           </Route>
         </Switch>
       )}
