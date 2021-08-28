@@ -146,7 +146,6 @@ const events = (state = initialState, action) => {
             return newState
         case REMOVE:
             const newerState = {
-                ...state,
                 ...state?.events?.filter((event) => event !== action.event)
             }
             return newerState
