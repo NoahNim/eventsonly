@@ -9,6 +9,7 @@ function Event() {
     const history = useHistory();
     const events = useSelector((state) => state?.events);
     const eventsArray = Object.values(events);
+    const sessionUser = useSelector((state) => state.session.user);
 
     useEffect(() => {
         // console.log('DISPATCH WORKING!!!')
@@ -33,22 +34,23 @@ function Event() {
                     if (event?.id === parseInt(id)) {
                         return (
                             <div>
-                            <div className="single-event">
-                                <li className="event-li"><img height="500" width="500" alt="eventphoto" src={event?.eventPhoto}></img></li>
-                                <h2 className="event-li">{event?.name}</h2>
-                                <li className="event-li">{event?.description}</li>
-                                <li className="event-li">{event?.date}</li>
+                                <div className="single-event">
+                                    <li className="event-li"><img height="500" width="500" alt="eventphoto" src={event?.eventPhoto}></img></li>
+                                    <h2 className="event-li">{event?.name}</h2>
+                                    <li className="event-li">{event?.description}</li>
+                                    <li className="event-li">{event?.date}</li>
                                 </div>
-                                <div className="event-buttons">
+                                {sessionUser?.id === event?.userId ? <div className = "event-buttons" >
                                     <Link to={`/events/${event.id}/edit`}><button className="event-button">Edit</button></Link>
                                     <button className="event-button" onClick={deleteEventHandler}>Delete</button>
                                 </div>
+                                 : null  }
                             </div>
-                        )
+            )
                     }
                 })}
             </ul>
-        </div>
+        </div >
     )
 }
 
