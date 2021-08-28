@@ -19,7 +19,8 @@ function Event() {
 
     console.log('params id', id)
 
-    const deleteEvent = async (id) => {
+    const deleteEventHandler = async () => {
+        // const eventId = parseInt(id);
         await dispatch(deleteEvent(id))
 
         return history.push('/events')
@@ -32,12 +33,12 @@ function Event() {
                     if (event?.id === parseInt(id)) {
                         return (
                             <div>
-                                <li><img src={event?.eventPhoto}></img></li>
+                                <li><img alt="eventphoto" src={event?.eventPhoto}></img></li>
                                 <li>{event?.name}</li>
                                 <li>{event?.description}</li>
                                 <li>{event?.date}</li>
                                 <Link to={`/events/${event.id}/edit`}><button>Edit</button></Link>
-                                <button onClick={deleteEvent}>Delete</button>
+                                <button onClick={deleteEventHandler}>Delete</button>
                             </div>
                         )
                     }

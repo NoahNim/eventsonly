@@ -84,6 +84,8 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     let eventId = req.params.id;
     const event = await Event.findByPk(eventId);
 
+    console.log('THIS EVENT IN BACKEND', event);
+
     await event.destroy()
     return res.json();
 } ))

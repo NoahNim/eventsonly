@@ -103,15 +103,19 @@ export const editEvent = (id, eventData) => async (dispatch) => {
 
 //Delete Event
 export const deleteEvent = (id) => async (dispatch) => {
-    // const eventRes = await csrfFetch(`/api/events/${id}/`);
-    // const event = await eventRes.json();
+    const eventRes = await csrfFetch(`/api/events/${id}/`);
+    const event = await eventRes.json();
 
     const res = await csrfFetch(`/api/events/${id}/`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+        }
     });
 
     if (res.ok) {
-        const event = await res.json
+        // const event = await res.json();
+        // console.log(event);
         dispatch(remove(event));
     }
 }
