@@ -20,6 +20,7 @@
 }
 
 .events-page {
+    margin-top: 25px;
     margin-right: 25px;
     display: flex;
     flex-direction: column;
@@ -29,4 +30,12 @@
 .event-image {
     border-radius: 10px;
     margin-bottom: 10px;
+}
+
+.new-event-button {
+    background-color: rgb(151, 199, 241);
+    border: solid rgb(151, 199, 241);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
 }

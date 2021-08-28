@@ -20,7 +20,7 @@ function EventsManager() {
 
     return (
         <div className="events-page">
-            <div><Link to="/events/new"><button>New Event</button></Link></div>
+            <div><Link to="/events/new"><button className="new-event-button">+ New Event +</button></Link></div>
             <div className="events-list-container">
             <ul className="events-list">
                 {
