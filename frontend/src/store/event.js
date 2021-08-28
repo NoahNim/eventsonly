@@ -95,7 +95,7 @@ export const editEvent = (id, eventData) => async (dispatch) => {
         body: JSON.stringify({ id, name, description, date, eventPhoto })
     })
 
-    if (res.ok) {
+    if (res?.ok) {
         const event = await res.json();
         return dispatch(edit(event));
     }

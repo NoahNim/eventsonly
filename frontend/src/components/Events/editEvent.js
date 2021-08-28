@@ -36,7 +36,7 @@ function EditEvent() {
 
         const eventId = Number(id)
 
-        console.log(eventId)
+        // console.log(eventId)
 
         const eventSubmit = await dispatch(editEvent(eventId, payload))
             .catch(async (res) => {
