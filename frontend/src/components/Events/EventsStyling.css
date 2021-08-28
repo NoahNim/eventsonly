@@ -2,6 +2,21 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    justify-content: flex-start;
     width: 100%;
-    margin: 0;
+    margin-left: 18px;
+    padding: 0;
+}
+
+.event-container {
+    margin: 15px;
+    background-color: rgb(151, 199, 241);
+    padding: 15px;
+}
+
+.events-page {
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

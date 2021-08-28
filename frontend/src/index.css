@@ -28,3 +28,8 @@ label {
     padding-left: 20px;
     font-weight: 200;
 }
+
+ul {
+    text-decoration: none;
+    list-style-type: none;
+}
