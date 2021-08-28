@@ -23,8 +23,8 @@ const add = (event) => ({
 // EDIT Event
 const edit = (event) => ({
     type: EDIT,
-    event
-})
+    event,
+}, console.log('ACTION EVENT THING F', event))
 
 // REMOVE Event
 const remove = (event) => ({
@@ -145,9 +145,11 @@ const events = (state = initialState, action) => {
             const newState = { ...state[action.event.id] }
             return newState
         case REMOVE:
-            // const newerState = { ...state }
-            delete action.event.id
-            return state
+            const newerState = {
+                ...state,
+                ...state?.events?.filter((event) => event !== action.event)
+            }
+            return newerState
         default:
             return state;
     }
