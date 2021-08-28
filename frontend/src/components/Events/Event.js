@@ -23,7 +23,7 @@ function Event() {
         // const eventId = parseInt(id);
         await dispatch(deleteEvent(id))
 
-        return history.push('/events')
+        history.push('/events')
     }
 
     return (

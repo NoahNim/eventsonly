@@ -20,7 +20,7 @@ const add = (event) => ({
     event
 })
 
-//EDIT Event
+// EDIT Event
 const edit = (event) => ({
     type: EDIT,
     event
@@ -114,8 +114,6 @@ export const deleteEvent = (id) => async (dispatch) => {
     });
 
     if (res.ok) {
-        // const event = await res.json();
-        // console.log(event);
         dispatch(remove(event));
     }
 }
@@ -137,20 +135,19 @@ const events = (state = initialState, action) => {
             if (!state[action.event.id]) {
                 const newState = {
                     ...state,
-                    // [action.event.id]: action.event.id
+                    // [action.event.id]: action.event
                 }
                 return newState
             }
+            // return { ...state[action.event.id] }
             break;
         case EDIT:
-            const newState = {
-                ...state
-            }
+            const newState = { ...state[action.event.id] }
             return newState
         case REMOVE:
-            const newerState = { ...state }
-            delete newerState[action.event.id]
-            return newerState
+            // const newerState = { ...state }
+            delete action.event.id
+            return state
         default:
             return state;
     }
