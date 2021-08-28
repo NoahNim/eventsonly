@@ -39,3 +39,22 @@
     font-size: 14px;
     font-weight: 500;
 }
+
+.single-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-li {
+    margin: 10px;
+}
+
+.event-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.event-button {
+    margin: 10px;
+}

@@ -27,18 +27,22 @@ function Event() {
     }
 
     return (
-        <div>
+        <div className="events-page">
             <ul>
                 {eventsArray?.map((event) => {
                     if (event?.id === parseInt(id)) {
                         return (
                             <div>
-                                <li><img alt="eventphoto" src={event?.eventPhoto}></img></li>
-                                <li>{event?.name}</li>
-                                <li>{event?.description}</li>
-                                <li>{event?.date}</li>
-                                <Link to={`/events/${event.id}/edit`}><button>Edit</button></Link>
-                                <button onClick={deleteEventHandler}>Delete</button>
+                            <div className="single-event">
+                                <li className="event-li"><img height="500" width="500" alt="eventphoto" src={event?.eventPhoto}></img></li>
+                                <h2 className="event-li">{event?.name}</h2>
+                                <li className="event-li">{event?.description}</li>
+                                <li className="event-li">{event?.date}</li>
+                                </div>
+                                <div className="event-buttons">
+                                    <Link to={`/events/${event.id}/edit`}><button className="event-button">Edit</button></Link>
+                                    <button className="event-button" onClick={deleteEventHandler}>Delete</button>
+                                </div>
                             </div>
                         )
                     }
