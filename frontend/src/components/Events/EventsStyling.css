@@ -1,0 +1,7 @@
+.events-list {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}

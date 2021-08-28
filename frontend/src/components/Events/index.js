@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom'
 import { getEvents } from "../../store/event";
+import './EventsStyling.css';
 
 function EventsManager() {
     // const sessionUser = useSelector((state) => state.session.user);
@@ -18,14 +19,14 @@ function EventsManager() {
     console.log('THIS IS THE EVENTS VAR', eventsArray)
 
     return (
-        <div>
+        <div className="events-page">
             <div><Link to="/events/new"><button>New Event</button></Link></div>
-            <div>
-            <ul>
+            <div className="events-list-container">
+            <ul className="events-list">
                 {
                     eventsArray?.map(event => {
                         return (
-                            <div>
+                            <div className="event-container">
                                 <Link to={`/events/${event?.id}`}> <img alt="eventPhoto" src={event?.eventPhoto} height="250" width="250"></img></Link>
                             </div>
                         )
