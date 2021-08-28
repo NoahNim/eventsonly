@@ -10,8 +10,13 @@
 
 .event-container {
     margin: 15px;
-    background-color: rgb(151, 199, 241);
+    /* background-color: rgb(151, 199, 241); */
     padding: 15px;
+    border: solid 1.45px  rgb(151, 199, 241);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .events-page {
@@ -19,4 +24,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.event-image {
+    border-radius: 10px;
+    margin-bottom: 10px;
 }

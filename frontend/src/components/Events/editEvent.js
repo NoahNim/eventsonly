@@ -26,6 +26,8 @@ function EditEvent() {
 
         const userId = sessionUser.id
 
+        const eventId = Number(id)
+
         const payload = {
             name,
             description,
@@ -33,8 +35,6 @@ function EditEvent() {
             eventPhoto,
             userId
         }
-
-        const eventId = Number(id)
 
         console.log(eventId)
 

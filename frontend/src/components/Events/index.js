@@ -27,8 +27,8 @@ function EventsManager() {
                     eventsArray?.map(event => {
                         return (
                             <div className="event-container">
-                                <li key={event.name}>{event.name}</li>
-                                <Link key={event.id} to={`/events/${event?.id}`}> <img key={event.eventPhoto} alt="eventPhoto" src={event?.eventPhoto} height="250" width="250"></img></Link>
+                                <h5 className="event-name" key={event.name}>{event.name}</h5>
+                                <Link className="event-image-link" key={event.id} to={`/events/${event?.id}`}> <img className="event-image" key={event.eventPhoto} alt="eventPhoto" src={event?.eventPhoto} height="250" width="250"></img></Link>
                             </div>
                         )
                     })
