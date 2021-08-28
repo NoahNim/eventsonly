@@ -95,8 +95,8 @@ export const editEvent = (id, eventData) => async (dispatch) => {
         body: JSON.stringify({ id, name, description, date, eventPhoto })
     })
 
-    if (res?.ok) {
-        const event = await res.json();
+    const event = await res.json();
+    if (res.ok) {
         return dispatch(edit(event));
     }
 }
@@ -108,9 +108,6 @@ export const deleteEvent = (id) => async (dispatch) => {
 
     const res = await csrfFetch(`/api/events/${id}/`, {
         method: 'DELETE',
-        headers: {
-            "Content-Type": "application/json",
-        }
     });
 
     if (res.ok) {

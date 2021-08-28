@@ -36,18 +36,21 @@ function EditEvent() {
 
         const eventId = Number(id)
 
-        // console.log(eventId)
+        console.log(eventId)
+
+        // const eventSubmit =
 
         const eventSubmit = await dispatch(editEvent(eventId, payload))
             .catch(async (res) => {
                 const data = await res?.json();
+                console.log(data);
                 setErrors(data?.errors);
             });
 
-        console.log(eventSubmit)
+        // console.log(eventSubmit)
 
         if (eventSubmit) {
-            console.log('EVENT SUBMIT IN IF', eventSubmit)
+            // console.log('EVENT SUBMIT IN IF', eventSubmit)
             history.push('/events')
         }
     }
