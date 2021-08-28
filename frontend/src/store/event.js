@@ -86,17 +86,17 @@ export const createEvent = (eventData) => async (dispatch) => {
 
 //Edit Event
 export const editEvent = (id, eventData) => async (dispatch) => {
-    const { name, description, date, eventPhoto } = eventData;
+    const { name, description, date, eventPhoto, userId } = eventData;
     const res = await csrfFetch(`/api/events/${id}/edit/`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id, name, description, date, eventPhoto })
+        body: JSON.stringify({ id, name, description, date, eventPhoto, userId })
     })
 
-    const event = await res.json();
-    if (res.ok) {
+    if (res?.ok) {
+        const event = await res?.json();
         return dispatch(edit(event));
     }
 }
