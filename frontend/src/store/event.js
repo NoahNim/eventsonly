@@ -24,7 +24,7 @@ const add = (event) => ({
 const edit = (event) => ({
     type: EDIT,
     event,
-}, console.log('ACTION EVENT THING F', event))
+})
 
 // REMOVE Event
 const remove = (event) => ({

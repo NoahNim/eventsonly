@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom';
 import { editEvent } from '../../store/event';
@@ -33,7 +33,8 @@ function EditEvent() {
             description,
             date,
             eventPhoto,
-            userId
+            userId,
+            eventId
         }
 
         console.log(eventId)
@@ -43,7 +44,6 @@ function EditEvent() {
         const eventSubmit = await dispatch(editEvent(eventId, payload))
             .catch(async (res) => {
                 const data = await res?.json();
-                console.log(data);
                 setErrors(data?.errors);
             });
 
