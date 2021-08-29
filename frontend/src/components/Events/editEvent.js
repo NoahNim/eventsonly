@@ -57,34 +57,43 @@ function EditEvent() {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div>
+        <div className="new-event-container">
+            <h2>Editing Event</h2>
+            <form className="new-event-form" onSubmit={handleSubmit}>
+                <div className="new-event-div errors">
                     <ul>
                         {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                 </div>
-                <label>Event Name</label>
-                <input
-                    type="test"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                // required
-                ></input>
-                <label>Description</label>
-                <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
-                <label>Date</label>
-                <input
-                    type="date"
-                    min="2021-01-31"
-                    max="2099-12-31"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                >
-                </input>
+                <div className="new-event-div">
+                    <label>Event Name</label>
+                    <input
+                        type="test"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    // required
+                    ></input>
+                </div>
+                <div className="new-event-div">
+                    <label>Description</label>
+                    <textarea
+                        className="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
+                </div>
+                <div className="new-event-div">
+                    <label>Date</label>
+                    <input
+                        type="date"
+                        min="2021-01-31"
+                        max="2099-12-31"
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                    >
+                    </input>
+                </div>
+                <div className="new-event-div">
                 <label className="signup-label">
                     Profile Photo URL
                 </label>
@@ -93,8 +102,9 @@ function EditEvent() {
                     value={eventPhoto}
                     onChange={(e) => setEventPhoto(e.target.value)}
                 // required
-                />
-                <button type="submit">Edit</button>
+                    />
+                </div>
+                <button className="new-event-button new-event-creator" type="submit">Edit</button>
             </form>
         </div>
     )

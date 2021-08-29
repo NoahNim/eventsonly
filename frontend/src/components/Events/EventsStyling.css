@@ -85,7 +85,7 @@
     align-items: center;
     width: 500px;
     border-radius: 10px;
-    margin-top: 25px;
+    margin-top: 10px;
     border: 2px solid rgb(151, 199, 241);
     border-radius: 10px;
 }
@@ -96,7 +96,7 @@
     align-items: center;
     height: 90%;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 
@@ -112,4 +112,12 @@
 
 .description {
     height: 100px;
+}
+
+.errors {
+    color: red;
+}
+
+.new-event-container > h2 {
+    color: rgb(151, 199, 241);
 }

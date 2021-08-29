@@ -50,7 +50,7 @@ function CreateEvent() {
             <div className="new-event-container">
                 <h2>Create Event</h2>
                 <form className="new-event-form" onSubmit={handleSubmit}>
-                    <div className="new-event-div">
+                    <div className="new-event-div errors">
                         <ul>
                             {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
                         </ul>
