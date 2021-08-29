@@ -40,7 +40,8 @@ function Event() {
                                     <li className="event-li">{event?.description}</li>
                                     <li className="event-li">{event?.date}</li>
                                 </div>
-                                {sessionUser?.id === event?.userId ? <div className = "event-buttons" >
+                                {
+                                    sessionUser?.id === event?.userId ? <div className="event-buttons" >
                                     <Link to={`/events/${event.id}/edit`}><button className="event-button event-edit"> [\] Edit [\]</button></Link>
                                     <button className="event-button event-delete" onClick={deleteEventHandler}> - Delete -</button>
                                 </div>
