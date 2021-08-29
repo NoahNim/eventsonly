@@ -44,6 +44,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .event-li {
@@ -121,3 +122,23 @@
 .new-event-container > h2 {
     color: rgb(151, 199, 241);
 }
+
+.event-description {
+   overflow-wrap: normal;
+   overflow-y: scroll;
+   overflow-x: wrap;
+   width: 50%;
+   height: auto;
+}
+
+/* .total-event-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0%;
+    border: 1px solid rgb(151, 199, 241);
+    border-radius: 15px;
+} */

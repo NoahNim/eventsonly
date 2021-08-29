@@ -21,8 +21,8 @@ function Event() {
     console.log('params id', id)
 
     const deleteEventHandler = async () => {
-            await dispatch(deleteEvent(id))
-            history.push('/events')
+        await dispatch(deleteEvent(id))
+        history.push('/events')
     }
 
     // function deleteAlert() {
@@ -41,20 +41,24 @@ function Event() {
             <ul>
                 {eventsArray?.map((event) => {
                     if (event?.id === parseInt(id)) {
+
+                        let newDate = event?.date.toLocaleString().split(/\D/).slice(0, 3).map(num => num.padStart(2, "0")).join("/")
                         return (
                             <div>
-                                <div className="single-event">
-                                    <li className="event-li"><img className="single-event-image" height="500" width="500" alt="eventphoto" src={event?.eventPhoto}></img></li>
-                                    <h2 className="event-li">{event?.name}</h2>
-                                    <li className="event-li">{event?.description}</li>
-                                    <li className="event-li">{event?.date}</li>
-                                </div>
-                                {
-                                    sessionUser?.id === event?.userId ? <div className="event-buttons" >
-                                        <Link to={`/events/${event.id}/edit`}><button className="event-button event-edit"> [\] Edit [\]</button></Link>
-                                        <button className="event-button event-delete" onClick={deleteEventHandler}> - Delete -</button>
+                                <div className="total-event-container">
+                                    <div className="single-event">
+                                        <li className="event-li"><img className="single-event-image" height="500" width="500" alt="eventphoto" src={event?.eventPhoto}></img></li>
+                                        <h2 className="event-li">{event?.name}</h2>
+                                        <h3 className="event-li">{newDate}</h3>
+                                        <li className="event-li event-description"><p>{event?.description}</p></li>
                                     </div>
-                                        : null}
+                                    {
+                                        sessionUser?.id === event?.userId ? <div className="event-buttons" >
+                                            <Link to={`/events/${event.id}/edit`}><button className="event-button event-edit"> [\] Edit [\]</button></Link>
+                                            <button className="event-button event-delete" onClick={deleteEventHandler}> - Delete -</button>
+                                        </div>
+                                            : null}
+                                </div>
                             </div>
                         )
                     }
