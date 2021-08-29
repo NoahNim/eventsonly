@@ -21,10 +21,14 @@ function Event() {
     console.log('params id', id)
 
     const deleteEventHandler = async () => {
-        // const eventId = parseInt(id);
-        await dispatch(deleteEvent(id))
+            await dispatch(deleteEvent(id))
+            history.push('/events')
+    }
 
-        history.push('/events')
+    function deleteAlert() {
+        if(window.confirm('Are you sure you wish to delete this?')){
+            deleteEventHandler()
+        }
     }
 
     return (
@@ -42,12 +46,12 @@ function Event() {
                                 </div>
                                 {
                                     sessionUser?.id === event?.userId ? <div className="event-buttons" >
-                                    <Link to={`/events/${event.id}/edit`}><button className="event-button event-edit"> [\] Edit [\]</button></Link>
-                                    <button className="event-button event-delete" onClick={deleteEventHandler}> - Delete -</button>
-                                </div>
-                                 : null  }
+                                        <Link to={`/events/${event.id}/edit`}><button className="event-button event-edit"> [\] Edit [\]</button></Link>
+                                        <button className="event-button event-delete" onClick={deleteAlert}> - Delete -</button>
+                                    </div>
+                                        : null}
                             </div>
-            )
+                        )
                     }
                 })}
             </ul>
