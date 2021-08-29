@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from 'react-router-dom';
 import { getEvents, deleteEvent } from '../../store/event';
+import DeleteEventComponent from './DeleteEvent';
 
 function Event() {
     const { id } = useParams();
@@ -25,11 +26,16 @@ function Event() {
             history.push('/events')
     }
 
-    function deleteAlert() {
-        if(window.confirm('Are you sure you wish to delete this?')){
-            deleteEventHandler()
-        }
-    }
+    // function deleteAlert() {
+    //     // if(window.confirm('Are you sure you wish to delete this?')){
+    //     //     deleteEventHandler()
+    //     // }
+    //     return (
+    //         <DeleteEventComponent />
+    //     )
+    // }
+
+
 
     return (
         <div className="events-page">
@@ -47,7 +53,7 @@ function Event() {
                                 {
                                     sessionUser?.id === event?.userId ? <div className="event-buttons" >
                                         <Link to={`/events/${event.id}/edit`}><button className="event-button event-edit"> [\] Edit [\]</button></Link>
-                                        <button className="event-button event-delete" onClick={deleteAlert}> - Delete -</button>
+                                        <button className="event-button event-delete" onClick={deleteEventHandler}> - Delete -</button>
                                     </div>
                                         : null}
                             </div>
