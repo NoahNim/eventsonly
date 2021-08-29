@@ -51,7 +51,7 @@ function EditEvent() {
 
         if (eventSubmit) {
             // console.log('EVENT SUBMIT IN IF', eventSubmit)
-            history.push('/events')
+            history.push(`/events/${eventId}`)
         }
     }
 

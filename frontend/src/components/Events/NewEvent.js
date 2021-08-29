@@ -37,7 +37,7 @@ function CreateEvent() {
                 setErrors(data?.errors);
             });
 
-        console.log("EVENT SUMBISSION RES", eventSubmit.event.events.id)
+        // console.log("EVENT SUMBISSION RES", eventSubmit.event.events.id)
 
         let eventId = eventSubmit.event.events.id
 

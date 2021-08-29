@@ -79,7 +79,7 @@ export const createEvent = (eventData) => async (dispatch) => {
 
     if (res.ok) {
         const event = await res.json();
-        console.log('EVENT IN THUNK', event)
+        // console.log('EVENT IN THUNK', event)
         return dispatch(add(event));
     }
 }
