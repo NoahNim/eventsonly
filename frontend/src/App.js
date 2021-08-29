@@ -7,6 +7,10 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 // import { Modal } from './context/Modal';
 import Home from './components/Homepage'
+import EventsManager from './components/Events';
+import CreateEvent from './components/Events/NewEvent';
+import Event from './components/Events/Event';
+import EditEvent from './components/Events/editEvent';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,6 +18,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    document.title = "Events Only"
   }, [dispatch]);
 
   return (
@@ -35,6 +40,18 @@ function App() {
           </Route>
           <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/events" exact>
+            <EventsManager />
+          </Route>
+          <Route path="/events/new" exact>
+            <CreateEvent />
+          </Route>
+          <Route path="/events/:id" exact>
+            <Event />
+          </Route>
+          <Route path="/events/:id/edit" exact>
+            <EditEvent />
           </Route>
         </Switch>
       )}

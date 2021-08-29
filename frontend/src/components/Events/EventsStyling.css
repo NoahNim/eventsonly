@@ -1,0 +1,144 @@
+.events-list {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: 18px;
+    padding: 0;
+}
+
+.event-container {
+    margin: 15px;
+    /* background-color: rgb(151, 199, 241); */
+    padding: 15px;
+    border: solid 1.45px  rgb(151, 199, 241);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.events-page {
+    margin-top: 25px;
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-image {
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.new-event-button {
+    background-color: rgb(151, 199, 241);
+    border: solid rgb(151, 199, 241);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.single-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.event-li {
+    margin: 10px;
+}
+
+.event-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.event-button {
+    margin: 10px;
+}
+
+.single-event-image {
+    border-radius: 6px;
+}
+
+.event-edit {
+    background-color: rgb(151, 199, 241);
+    border: solid rgb(151, 199, 241);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.event-delete {
+    background-color: rgb(250, 60, 60);
+     border: solid rgb(250, 60, 60);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.new-event-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 2px solid rgb(151, 199, 241);
+    border-radius: 10px;
+}
+
+.new-event-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+.new-event-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.new-event-creator {
+    margin-bottom: 15px;
+}
+
+.description {
+    height: 100px;
+}
+
+.errors {
+    color: red;
+}
+
+.new-event-container > h2 {
+    color: rgb(151, 199, 241);
+}
+
+.event-description {
+   overflow-wrap: normal;
+   overflow-y: scroll;
+   overflow-x: wrap;
+   width: 50%;
+   height: auto;
+}
+
+/* .total-event-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0%;
+    border: 1px solid rgb(151, 199, 241);
+    border-radius: 15px;
+} */
