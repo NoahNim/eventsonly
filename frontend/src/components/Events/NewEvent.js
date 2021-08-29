@@ -37,11 +37,13 @@ function CreateEvent() {
                 setErrors(data?.errors);
             });
 
-        console.log(eventSubmit)
+        console.log("EVENT SUMBISSION RES", eventSubmit.event.events.id)
+
+        let eventId = eventSubmit.event.events.id
 
         if (eventSubmit) {
-            console.log('EVENT SUBMIT IN IF', eventSubmit)
-            history.push('/events')
+            // console.log('EVENT SUBMIT IN IF', eventSubmit)
+            history.push(`/events/${eventId}`)
         }
     }
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from 'react-router-dom';
 import { getEvents, deleteEvent } from '../../store/event';
-import DeleteEventComponent from './DeleteEvent';
 
 function Event() {
     const { id } = useParams();
