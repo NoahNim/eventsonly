@@ -62,3 +62,19 @@
 .single-event-image {
     border-radius: 6px;
 }
+
+.event-edit {
+    background-color: rgb(151, 199, 241);
+    border: solid rgb(151, 199, 241);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.event-delete {
+    background-color: rgb(250, 60, 60);
+     border: solid rgb(250, 60, 60);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
