@@ -18,6 +18,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    document.title = "Events Only"
   }, [dispatch]);
 
   return (
