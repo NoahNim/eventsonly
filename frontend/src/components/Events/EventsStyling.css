@@ -58,3 +58,7 @@
 .event-button {
     margin: 10px;
 }
+
+.single-event-image {
+    border-radius: 6px;
+}

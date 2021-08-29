@@ -35,7 +35,7 @@ function Event() {
                         return (
                             <div>
                                 <div className="single-event">
-                                    <li className="event-li"><img height="500" width="500" alt="eventphoto" src={event?.eventPhoto}></img></li>
+                                    <li className="event-li"><img className="single-event-image" height="500" width="500" alt="eventphoto" src={event?.eventPhoto}></img></li>
                                     <h2 className="event-li">{event?.name}</h2>
                                     <li className="event-li">{event?.description}</li>
                                     <li className="event-li">{event?.date}</li>
