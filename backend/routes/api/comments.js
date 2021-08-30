@@ -14,9 +14,33 @@ const validateComment = [
 ]
 
 //Get comments
-router.get("/", asyncHandler(async (req, res) => {
-    const comments = await Comment.findAll()
+router.get("/events/:id(\\d+)'", asyncHandler(async (req, res) => {
+    const eventId = req.params.id
+    const event = await Event.findByPk(eventId)
+    const comments = await Comment.findAll({
+        include: event
+    })
 
     return res.json({comments})
 }))
+
+//Create comment
+router.post("/events/:id(\\d+)/comment/new", require, validateComment, asyncHandler(async (req, res) => {
+    let userId = req.user.id;
+    let eventId = req.params.id;
+
+    const { content } = req.body;
+
+    const comment = {
+        content,
+        userId,
+        eventId
+    }
+
+    await comment.save();
+
+    return res.json({ comments: comment })
+}))
+
+
 
