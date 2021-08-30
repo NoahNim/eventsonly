@@ -8,16 +8,26 @@ function Comment() {
     const { id } = useParams();
     const dispatch = useDispatch();
     const comments = useSelector((state) => state?.comments);
+    const commentsArray = Object.values(comments);
 
-    console.log(comments)
-
+    console.log(commentsArray)
     
     useEffect(() => {
         dispatch(getComments(id));
     }, [dispatch, id])
     
     return (
-        <h1>COMMENT COMPONENT RENDERS</h1>
+        <div>
+            <ul>
+                {commentsArray?.map(comment => {
+                    if (comment?.eventId === parseInt(id)) {
+                        return (
+                            <li>{comment.content}</li>
+                        )
+                    }
+                })}
+            </ul>
+       </div>
     )
 }
 
