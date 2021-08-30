@@ -3,7 +3,7 @@ const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { Event, User } = require("../../db/models");
+const { Event, User, Comment } = require("../../db/models");
 
 const router = express.Router();
 
@@ -19,6 +19,15 @@ const validateCreateEvent = [
         .withMessage("Please give this event a photo"),
     handleValidationErrors
 ]
+
+
+const validateComment = [
+    check("content")
+        .exists({ checkFalsy: true })
+        .withMessage("Please input a comment to be posted"),
+    handleValidationErrors
+]
+
 
 // Get events
 router.get("/", asyncHandler(async (req, res) => {
@@ -88,6 +97,15 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 
     await event.destroy()
     return res.json();
-} ))
+}))
+
+//Get comments
+router.get("/:eventId(\\d+)/comments'", asyncHandler(async (req, res) => {
+    const eventId = req.params.eventId;
+    const event = await Event.findByPk(eventId)
+    const comments = await Comment.findAll()
+
+    return res.json({ comments })
+}))
 
 module.exports = router;

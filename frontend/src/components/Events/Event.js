@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from 'react-router-dom';
 import { getEvents, deleteEvent } from '../../store/event';
+import Comment from '../Comments';
 
 function Event() {
     const { id } = useParams();
@@ -57,13 +58,17 @@ function Event() {
                                             <Link to={`/events/${event.id}/edit`}><button className="event-button event-edit"> [\] Edit [\]</button></Link>
                                             <button className="event-button event-delete" onClick={deleteEventHandler}> - Delete -</button>
                                         </div>
-                                            : null}
+                                            : null
+                                    }
                                 </div>
                             </div>
                         )
                     }
                 })}
             </ul>
+            <div>
+                <Comment />
+            </div>
         </div >
     )
 }

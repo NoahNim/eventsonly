@@ -34,7 +34,7 @@ const remove = (comment) => ({
 })
 
 export const getComments = (id) => async (dispatch) => {
-    const res = await fetch(`/events/:eventId/${id}`);
+    const res = await fetch(`/api/events/${id}/comments'`);
 
     if (res.ok) {
         const data = await res.json();
@@ -55,7 +55,9 @@ const comments = (state = initialState, action) => {
                 ...allComments,
                 ...state
             }
-        case default:
+        default:
             return state;
     }
 }
+
+export default comments
