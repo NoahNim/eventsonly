@@ -11,6 +11,7 @@ import EventsManager from './components/Events';
 import CreateEvent from './components/Events/NewEvent';
 import Event from './components/Events/Event';
 import EditEvent from './components/Events/editEvent';
+import CreateComment from './components/Comments/NewComment';
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/events" exact>
             <EventsManager />
+          </Route>
+          <Route path="/events/:id/comment/new" exact>
+            <CreateComment />
           </Route>
           <Route path="/events/new" exact>
             <CreateEvent />

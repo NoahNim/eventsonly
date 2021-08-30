@@ -18,6 +18,7 @@ function Comment() {
     
     return (
         <div>
+            <Link to={`${id}/comment/new`}><button>New Comment</button></Link>
             <ul>
                 {commentsArray?.map(comment => {
                     if (comment?.eventId === parseInt(id)) {
@@ -26,8 +27,8 @@ function Comment() {
                             <div>
                                 <li>{comment.content}</li>
                                 <div>
-                                    <Link><buton>Edit   </buton></Link>
-                                    <Link><buton>Delete</buton></Link>
+                                    <Link><button>Edit   </button></Link>
+                                    <Link><button>Delete</button></Link>
                                 </div>
                             </div>
                         )

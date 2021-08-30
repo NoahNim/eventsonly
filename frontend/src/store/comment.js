@@ -51,7 +51,7 @@ export const getComments = (id) => async (dispatch) => {
 //New comment thunk
 
 export const createComment = (id, commentData) => async (dispatch) => {
-    const res = await fetch(`/api/events/${id}/comment/new`, {
+    const res = await csrfFetch(`/api/events/${id}/comment/new`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

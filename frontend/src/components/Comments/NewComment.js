@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom'
-import { createComment, getComments } from "../../store/comment";
+import { createComment } from "../../store/comment";
 import { Redirect } from 'react-router';
 
 function CreateComment() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [content, setContent];
+    const [content, setContent] = useState("")
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
     const { eventId } = useParams();
@@ -62,3 +62,5 @@ function CreateComment() {
         )
     }
 }
+
+export default CreateComment
