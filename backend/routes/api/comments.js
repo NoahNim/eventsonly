@@ -15,8 +15,8 @@ const validateComment = [
 
 //Get comments
 router.get("/events/:eventId(\\d+)'", asyncHandler(async (req, res) => {
-    const eventId = req.params.eventId
-    const event = await Event.findByPk(eventId)
+    const eventId = req.params.eventId;
+    const event = await Event.findByPk(eventId);
     const comments = await Comment.findAll({
         include: event
     })
@@ -73,3 +73,5 @@ router.delete("/events/:eventId(\\d+)/comment/:id(\\d+)", requireAuth, asyncHand
     await comment.destroy()
     return res.json();
 }))
+
+module.exports = router;
