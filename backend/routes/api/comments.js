@@ -43,4 +43,22 @@ router.post("/events/:id(\\d+)/comment/new", require, validateComment, asyncHand
 }))
 
 
+//Edit comment
+router.put("/events/:id(\\d+)/comment/:id(\\d+)/edit", requireAuth, validateComment, asyncHandler(async (req, res) => {
+    let userId = req.user.id;
+    let commentId = req.params.id;
 
+    const comment = await Comment.findByPk(commentId);
+
+    const { content, eventId } = req.body;
+
+    const updatedComment = {
+        content,
+        userId,
+        eventId
+    }
+
+    await comment.update(updatedComment)
+
+    return res.json({ comment })
+}))
