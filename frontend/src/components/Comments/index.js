@@ -26,7 +26,7 @@ function Comment() {
                             <div>
                                 <li>{comment.content}</li>
                                 <div>
-                                    <Link><buton>Edit</buton></Link>
+                                    <Link><buton>Edit   </buton></Link>
                                     <Link><buton>Delete</buton></Link>
                                 </div>
                             </div>

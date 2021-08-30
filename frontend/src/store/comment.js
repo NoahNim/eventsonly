@@ -33,6 +33,10 @@ const remove = (comment) => ({
     comment
 })
 
+
+//Thunks
+
+//Get comment thunk
 export const getComments = (id) => async (dispatch) => {
     const res = await fetch(`/api/events/${id}/comments'`);
 
@@ -43,6 +47,25 @@ export const getComments = (id) => async (dispatch) => {
         return dispatch(load(comments))
     }
 }
+
+//New comment thunk
+
+export const createComment = (id, commentData) => async (dispatch) => {
+    const res = await fetch(`/api/events/${id}/comment/new`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(commentData)
+    })
+
+    if (res.ok) {
+        const comment = await res.json();
+
+        return dispatch(add(comment))
+    }
+}
+
 
 const initialState = {}
 
@@ -55,6 +78,14 @@ const comments = (state = initialState, action) => {
                 ...allComments,
                 ...state
             }
+        case ADD:
+            if (!state[action.comment.id]) {
+                const newState = {
+                    ...state,
+                }
+                return newState;
+            }
+            break;
         default:
             return state;
     }
