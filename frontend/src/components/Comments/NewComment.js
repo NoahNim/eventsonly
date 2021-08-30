@@ -10,7 +10,7 @@ function CreateComment() {
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
-    const { eventId } = useParams();
+    const { id } = useParams();
 
     if (!sessionUser) return <Redirect to="/events" />;
 
@@ -20,6 +20,10 @@ function CreateComment() {
         setErrors([]);
 
         const userId = sessionUser.id;
+
+        const eventId = Number(id);
+
+        console.log('THIS IS THE EVENT ID', eventId)
 
         const payload = {
             content,
