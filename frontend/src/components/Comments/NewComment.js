@@ -41,7 +41,7 @@ function CreateComment() {
     if (sessionUser) {
         return (
             <div className="new-event-container">
-                <h2>Create Event</h2>
+                <h2>Create Comment</h2>
                 <form className="new-event-form" onSubmit={handleSubmit}>
                     <div className="new-event-div errors">
                         <ul>
