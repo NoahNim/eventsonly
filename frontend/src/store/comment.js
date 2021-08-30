@@ -32,3 +32,30 @@ const remove = (comment) => ({
     type: REMOVE,
     comment
 })
+
+export const getComments = (id) => async (dispatch) => {
+    const res = await fetch(`/events/:eventId/${id}`);
+
+    if (res.ok) {
+        const data = await res.json();
+
+        const { comments } = data;
+        return dispatch(load(comments))
+    }
+}
+
+const initialState = {}
+
+const comments = (state = initialState, action) => {
+    switch (action.type) {
+        case LOAD:
+            const allComments = {}
+            action.comment.forEach((comment) => (allComments[comment.id] = comment))
+            return {
+                ...allComments,
+                ...state
+            }
+        case default:
+            return state;
+    }
+}
