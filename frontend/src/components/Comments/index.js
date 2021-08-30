@@ -21,8 +21,15 @@ function Comment() {
             <ul>
                 {commentsArray?.map(comment => {
                     if (comment?.eventId === parseInt(id)) {
+                        console.log(comment?.userId)
                         return (
-                            <li>{comment.content}</li>
+                            <div>
+                                <li>{comment.content}</li>
+                                <div>
+                                    <Link><buton>Edit</buton></Link>
+                                    <Link><buton>Delete</buton></Link>
+                                </div>
+                            </div>
                         )
                     }
                 })}

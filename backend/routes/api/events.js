@@ -108,4 +108,55 @@ router.get("/:eventId(\\d+)/comments'", asyncHandler(async (req, res) => {
     return res.json({ comments })
 }))
 
+//Create comment
+
+router.post("/:eventId(\\d+)/comment/new", require, validateComment, asyncHandler(async (req, res) => {
+    let userId = req.user.id;
+    let eventId = req.params.eventId;
+
+    const { content } = req.body;
+
+    const comment = {
+        content,
+        userId,
+        eventId
+    }
+
+    await comment.save();
+
+    return res.json({ comments: comment })
+}))
+
+
+//Edit comment
+router.put("/:eventId(\\d+)/comment/:id(\\d+)/edit", requireAuth, validateComment, asyncHandler(async (req, res) => {
+    let userId = req.user.id;
+    let eventId = req.params.eventId;
+    let commentId = req.params.id;
+
+    const comment = await Comment.findByPk(commentId);
+
+    const { content } = req.body;
+
+    const updatedComment = {
+        content,
+        userId,
+        eventId
+    }
+
+    await comment.update(updatedComment)
+
+    return res.json({ comment })
+}))
+
+//Delete comment
+router.delete(":eventId(\\d+)/comment/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
+    let commentId = req.params.id;
+
+    const comment = await Comment.findByPk(commentId);
+
+    await comment.destroy()
+    return res.json();
+}))
+
 module.exports = router;
