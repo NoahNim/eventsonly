@@ -12,7 +12,8 @@ function EditComment() {
     const comments = useSelector((state) => state.comments)
     const commentsArray = Object.values(comments)
     const currentComment = commentsArray.filter((comment) => comment.id === Number(id))
-    const [content, setContent] = useState("")
+    let currentCommentCheck = currentComment[0] !== undefined ? currentComment[0].content : "";
+    const [content, setContent] = useState(currentCommentCheck)
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -62,11 +63,11 @@ function EditComment() {
                     </div>
                     <div className="new-event-div">
                         <label>Your Comment</label>
-                        <input
+                        <textarea
                             type="test"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
-                        ></input>
+                        ></textarea>
                     </div>
                     <button type="submit" className="new-event-button new-event-creator">Edit</button>
                 </form>
