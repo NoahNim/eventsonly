@@ -71,6 +71,23 @@ export const createComment = (id, commentData) => async (dispatch) => {
     }
 }
 
+// Edit Comment 
+export const editComment = (eventId, commentId, commentData) => async (dispatch) => {
+    const res = await csrfFetch(`/api/events/${eventId}/comment/${commentId}/edit`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(commentData)
+    })
+
+    if (res.ok) {
+        const comment = await res.json();
+
+        return dispatch(edit(comment));
+    }
+}
+
 
 const initialState = {}
 
