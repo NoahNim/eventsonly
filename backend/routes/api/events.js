@@ -161,8 +161,10 @@ router.delete(":eventId(\\d+)/comment/:id(\\d+)", requireAuth, asyncHandler(asyn
 
     const comment = await Comment.findByPk(commentId);
 
+    const resComment = res.json({comment});
+
     await comment.destroy()
-    return res.json();
+    return resComment;
 }))
 
 module.exports = router;

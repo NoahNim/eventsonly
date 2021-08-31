@@ -15,6 +15,10 @@ function Comment() {
     useEffect(() => {
         dispatch(getComments(id));
     }, [dispatch, id])
+
+    const deleteCommentHandler = async () => {
+
+    }
     
     return (
         <div>
@@ -28,7 +32,7 @@ function Comment() {
                                 <li>{comment.content}</li>
                                 <div>
                                     <Link to={`${id}/comment/${comment.id}/edit`}><button>Edit   </button></Link>
-                                    <Link><button>Delete</button></Link>
+                                    <Link><button onClick={deleteCommentHandler}>Delete</button></Link>
                                 </div>
                             </div>
                         )

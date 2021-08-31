@@ -88,6 +88,21 @@ export const editComment = (eventId, commentId, commentData) => async (dispatch)
     }
 }
 
+//Delete Comment
+
+export const deleteComment = (eventId, commentId) => async (dispatch) => {
+    const commentRes = await csrfFetch(`/api/events/${eventId}/${commentId}`, {
+        method: 'DELETE'
+    })
+
+    if (commentRes.ok) {
+        const comment = await commentRes?.json();
+        dispatch(remove(comment))
+    }
+
+
+}
+
 
 const initialState = {}
 
@@ -111,6 +126,11 @@ const comments = (state = initialState, action) => {
         case EDIT:
             const newState = { ...state[action.comment.id] }
             return newState
+        case REMOVE:
+            const newerState = {
+                ...state?.comments?.filter((comment) => comment !== action.comment)
+            }
+            return newerState
         default:
             return state;
     }
