@@ -97,6 +97,7 @@ export const deleteComment = (eventId, commentId) => async (dispatch) => {
 
     if (commentRes.ok) {
         const comment = await commentRes?.json();
+        console.log('COMMENT IN DELETE THUNK AHH', comment)
         dispatch(remove(comment))
     }
 }
@@ -125,8 +126,9 @@ const comments = (state = initialState, action) => {
             const newState = { ...state[action.comment.id] }
             return newState
         case REMOVE:
+            let stateArray = Object.values(state)
             const newerState = {
-                ...state?.comments?.filter((comment) => comment !== action.comment)
+                ...stateArray?.filter((comment) => comment.id !== action.comment.id)
             }
             return newerState
         default:
