@@ -51,6 +51,9 @@ export const getComments = (id) => async (dispatch) => {
 //New comment thunk
 
 export const createComment = (id, commentData) => async (dispatch) => {
+    console.log('THIS IS COMMENT DATA STUFF BEING FED FROM FONT END   ', commentData)
+    console.log("ID OF THE EVENT IN THUNK", typeof(id))
+
     const res = await csrfFetch(`/api/events/${id}/comment/new`, {
         method: "POST",
         headers: {

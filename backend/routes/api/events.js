@@ -109,24 +109,24 @@ router.get("/:eventId(\\d+)/comments'", asyncHandler(async (req, res) => {
 
 //Create Comment
 
-router.post("/:eventId(\\d+)/comment/new", require, validateComment, asyncHandler(async (req, res) => {
+router.post("/:eventId(\\d+)/comment/new", requireAuth, validateComment, asyncHandler(async (req, res) => {
     let userId = req.user.id;
     let eventId = req.params.eventId;
-    const event = await Event.findByPk(eventId);
-
-    const { content } = req.body;
-
-    const stringedEvent = String(eventId)
-    const stringedUser = String(userId)
+    // const event = await Event.findByPk(eventId);
 
     console.log('THIS IS THE USER ID THING AAAAHHH', userId)
 
 
+    const { content } = req.body;
 
+    // const stringedEvent = String(eventId)
+    // const stringedUser = String(userId)
+
+   
     const comment = await Comment.build({
         content,
-        stringedUser,
-        stringedEvent
+        userId,
+        eventId
     })
 
     await comment.save();
@@ -149,8 +149,8 @@ router.put("/:eventId(\\d+)/comment/:id(\\d+)/edit", requireAuth, validateCommen
 
     const updatedComment = {
         content,
-        stringedUser,
-        stringedEvent
+        userId,
+        eventId
     }
 
     await comment.update(updatedComment)
