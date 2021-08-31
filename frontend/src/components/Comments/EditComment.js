@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom'
-import { editComment } from "../../store/comment";
+import { editComment, getComments } from "../../store/comment";
 import { Redirect } from 'react-router';
 
 
 function EditComment() {
+    const { id, eventId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
+    const comments = useSelector((state) => state.comments)
+    const commentsArray = Object.values(comments)
+    const currentComment = commentsArray.filter((comment) => comment.id === Number(id))
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
-    const { id, eventId } = useParams();
+
+
+    console.log('TGIS IS LE CURRENT COMMENT AAAA', currentComment[0]);
+    
+    useEffect(() => {
+        dispatch(getComments(eventId));
+    }, [dispatch, eventId])
+
 
     if (!sessionUser) return <Redirect to="/events" />;
 
