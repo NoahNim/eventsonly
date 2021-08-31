@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom'
-import { createComment } from "../../store/comment";
+import { editComment } from "../../store/comment";
 import { Redirect } from 'react-router';
 
 
@@ -11,12 +11,32 @@ function EditComment() {
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
-    const { id } = useParams();
+    const { id, eventId } = useParams();
 
     if (!sessionUser) return <Redirect to="/events" />;
 
-    function handleSubmit() {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(id, eventId)
 
+        const userId = sessionUser.id
+
+        const payload = {
+            content,
+            userId,
+            eventId
+        }
+
+        const commentSubmit = await dispatch(editComment(eventId, id, payload))
+            .catch(async (res) => {
+                const data = await res?.json();
+                console.log('NEW COMMENT RES.JSON DATA', data);
+                setErrors(data?.errors)
+            })
+
+        if (commentSubmit) {
+            history.push(`/events/${eventId}`)
+        }
     }
 
     if (sessionUser) {

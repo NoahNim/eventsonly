@@ -144,9 +144,6 @@ router.put("/:eventId(\\d+)/comment/:id(\\d+)/edit", requireAuth, validateCommen
 
     const { content } = req.body;
 
-    const stringedEvent = String(eventId)
-    const stringedUser = String(userId)
-
     const updatedComment = {
         content,
         userId,
