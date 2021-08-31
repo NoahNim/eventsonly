@@ -27,7 +27,7 @@ function Comment() {
                             <div>
                                 <li>{comment.content}</li>
                                 <div>
-                                    <Link><button>Edit   </button></Link>
+                                    <Link to={`${id}/comment/${comment.id}/edit`}><button>Edit   </button></Link>
                                     <Link><button>Delete</button></Link>
                                 </div>
                             </div>

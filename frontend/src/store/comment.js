@@ -108,6 +108,9 @@ const comments = (state = initialState, action) => {
                 return newState;
             }
             break;
+        case EDIT:
+            const newState = { ...state[action.comment.id] }
+            return newState
         default:
             return state;
     }
