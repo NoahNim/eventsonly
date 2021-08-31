@@ -19,7 +19,7 @@ function CreateComment() {
 
         setErrors([]);
 
-        const userId = sessionUser.id;
+        const userId = sessionUser.id
 
         const eventId = Number(id);
 
@@ -31,9 +31,12 @@ function CreateComment() {
             eventId
         }
 
+        console.log('PAYLOAD FOR NEW COMMENT', payload)
+
         const commentSubmit = await dispatch(createComment(eventId, payload))
             .catch(async (res) => {
                 const data = await res?.json();
+                console.log('NEW COMMENT RES.JSON DATA', data);
                 setErrors(data?.errors)
             })
         

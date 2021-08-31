@@ -59,6 +59,8 @@ export const createComment = (id, commentData) => async (dispatch) => {
         body: JSON.stringify(commentData)
     })
 
+    console.log('THIS IS THE RES THING IN COMMENT THUNK', res)
+
     if (res.ok) {
         const comment = await res.json();
 

@@ -102,31 +102,37 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 //Get comments
 router.get("/:eventId(\\d+)/comments'", asyncHandler(async (req, res) => {
     const eventId = req.params.eventId;
-    const event = await Event.findByPk(eventId)
     const comments = await Comment.findAll()
 
     return res.json({ comments })
 }))
 
-//Create comment
+//Create Comment
 
 router.post("/:eventId(\\d+)/comment/new", require, validateComment, asyncHandler(async (req, res) => {
     let userId = req.user.id;
     let eventId = req.params.eventId;
+    const event = await Event.findByPk(eventId);
 
     const { content } = req.body;
 
-    const comment = {
+    const stringedEvent = String(eventId)
+    const stringedUser = String(userId)
+
+    console.log('THIS IS THE USER ID THING AAAAHHH', userId)
+
+
+
+    const comment = await Comment.build({
         content,
-        userId,
-        eventId
-    }
+        stringedUser,
+        stringedEvent
+    })
 
     await comment.save();
 
     return res.json({ comments: comment })
 }))
-
 
 //Edit comment
 router.put("/:eventId(\\d+)/comment/:id(\\d+)/edit", requireAuth, validateComment, asyncHandler(async (req, res) => {
@@ -138,10 +144,13 @@ router.put("/:eventId(\\d+)/comment/:id(\\d+)/edit", requireAuth, validateCommen
 
     const { content } = req.body;
 
+    const stringedEvent = String(eventId)
+    const stringedUser = String(userId)
+
     const updatedComment = {
         content,
-        userId,
-        eventId
+        stringedUser,
+        stringedEvent
     }
 
     await comment.update(updatedComment)
