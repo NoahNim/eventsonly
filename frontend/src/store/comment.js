@@ -91,7 +91,7 @@ export const editComment = (eventId, commentId, commentData) => async (dispatch)
 //Delete Comment
 
 export const deleteComment = (eventId, commentId) => async (dispatch) => {
-    const commentRes = await csrfFetch(`/api/events/${eventId}/${commentId}`, {
+    const commentRes = await csrfFetch(`/api/events/${eventId}/comment/${commentId}`, {
         method: 'DELETE'
     })
 
@@ -99,8 +99,6 @@ export const deleteComment = (eventId, commentId) => async (dispatch) => {
         const comment = await commentRes?.json();
         dispatch(remove(comment))
     }
-
-
 }
 
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from 'react-router-dom'
-import { getComments } from "../../store/comment";
+import { getComments, deleteComment } from "../../store/comment";
 // import './CommentsStyling';
 
 function Comment() {
@@ -9,16 +9,11 @@ function Comment() {
     const dispatch = useDispatch();
     const comments = useSelector((state) => state?.comments);
     const commentsArray = Object.values(comments);
-
-    console.log(commentsArray)
     
     useEffect(() => {
         dispatch(getComments(id));
     }, [dispatch, id])
 
-    const deleteCommentHandler = async () => {
-
-    }
     
     return (
         <div>
@@ -26,7 +21,11 @@ function Comment() {
             <ul>
                 {commentsArray?.map(comment => {
                     if (comment?.eventId === parseInt(id)) {
-                        console.log(comment?.userId)
+                        const deleteCommentHandler = async () => {
+                            console.log('DELETE COMMENT HANDLER EVENT ID', id)
+                            console.log('DELETE COMMENT HANDLER COMMENT ID', comment.id)
+                            await dispatch(deleteComment(id, comment.id))
+                        }
                         return (
                             <div>
                                 <li>{comment.content}</li>

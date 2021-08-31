@@ -156,7 +156,7 @@ router.put("/:eventId(\\d+)/comment/:id(\\d+)/edit", requireAuth, validateCommen
 }))
 
 //Delete comment
-router.delete(":eventId(\\d+)/comment/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
+router.delete("/:eventId(\\d+)/comment/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
     let commentId = req.params.id;
 
     const comment = await Comment.findByPk(commentId);

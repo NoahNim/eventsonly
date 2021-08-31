@@ -48,6 +48,6 @@ router.use("/users", usersRouter);
 
 router.use("/events", eventsRouter);
 
-// router.use("/comment", commentRouter);
+// router.use("/comments", commentRouter);
 
 module.exports = router;
