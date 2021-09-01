@@ -55,3 +55,4 @@ In the ```/frontend/``` directory run the following command:
 ```
 npm start
 ```
+The website should then be on http://localhost:3000/
