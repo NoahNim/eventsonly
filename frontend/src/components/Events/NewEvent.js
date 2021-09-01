@@ -84,7 +84,7 @@ function CreateEvent() {
                     </div>
                     <div className="new-event-div">
                         <label className="signup-label">
-                            Profile Photo URL
+                            Event Photo URL
                         </label>
                         <input
                             type="text"
