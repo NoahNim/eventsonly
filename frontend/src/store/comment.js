@@ -112,7 +112,7 @@ const comments = (state = initialState, action) => {
             action.comment.forEach((comment) => (allComments[comment.id] = comment))
             return {
                 ...allComments,
-                ...state
+                // ...state
             }
         case ADD:
             if (!state[action.comment.id]) {
