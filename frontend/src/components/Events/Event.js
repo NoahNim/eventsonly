@@ -13,13 +13,8 @@ function Event() {
     const sessionUser = useSelector((state) => state.session.user);
 
     useEffect(() => {
-        // console.log('DISPATCH WORKING!!!')
         dispatch(getEvents());
     }, [dispatch])
-
-    console.log(eventsArray);
-
-    console.log('params id', id)
 
     const deleteEventHandler = async () => {
         await dispatch(deleteEvent(id))
@@ -48,10 +43,10 @@ function Event() {
                             <div>
                                 <div className="total-event-container">
                                     <div className="single-event">
-                                        <li className="event-li"><img className="single-event-image" height="500" width="500" alt="eventphoto" src={event?.eventPhoto}></img></li>
-                                        <h2 className="event-li">{event?.name}</h2>
-                                        <h3 className="event-li">{newDate}</h3>
-                                        <li className="event-li event-description"><p>{event?.description}</p></li>
+                                        <li key={event?.eventPhoto} className="event-li"><img className="single-event-image" height="500" width="500" alt="eventphoto" src={event?.eventPhoto}></img></li>
+                                        <h2 key={event?.name} className="event-li">{event?.name}</h2>
+                                        <h3 key={event?.date} className="event-li">{newDate}</h3>
+                                        <li key={event?.description} className="event-li event-description"><p>{event?.description}</p></li>
                                     </div>
                                     {
                                         sessionUser?.id === event?.userId ? <div className="event-buttons" >

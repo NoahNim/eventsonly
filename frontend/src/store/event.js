@@ -52,20 +52,6 @@ export const getEvents = () => async (dispatch) => {
     }
 }
 
-//Get event thunk
-// export const getEvent = (id) => async (dispatch) => {
-//     const res = await fetch(`/api/events/${id}/`);
-
-//     console.log('RES IN GET EVENT', res)
-//     if (res.ok) {
-//         const data = await res.json();
-//         console.log('DATA IN GET EVENT THUNK', data)
-
-//         const { event } = data;
-//         return dispatch(loadevent(event));
-//     }
-// }
-
 //Create an event
 
 export const createEvent = (eventData) => async (dispatch) => {
@@ -79,7 +65,6 @@ export const createEvent = (eventData) => async (dispatch) => {
 
     if (res.ok) {
         const event = await res.json();
-        // console.log('EVENT IN THUNK', event)
         return dispatch(add(event));
     }
 }
@@ -123,7 +108,6 @@ const events = (state = initialState, action) => {
         case LOAD:
             const allEvents = {}
             action.event.forEach((event) => (allEvents[event.id] = event))
-            // console.log(allEvents)
             return {
                 ...allEvents,
                 ...state
@@ -132,11 +116,9 @@ const events = (state = initialState, action) => {
             if (!state[action.event.id]) {
                 const newState = {
                     ...state,
-                    // [action.event.id]: action.event
                 }
                 return newState
             }
-            // return { ...state[action.event.id] }
             break;
         case EDIT:
             const newState = { ...state[action.event.id] }

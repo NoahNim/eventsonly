@@ -46,20 +46,13 @@ function EditEvent() {
             eventId
         }
 
-        console.log(eventId)
-
-        // const eventSubmit =
-
         const eventSubmit = await dispatch(editEvent(eventId, payload))
             .catch(async (res) => {
                 const data = await res?.json();
                 setErrors(data?.errors);
             });
 
-        // console.log(eventSubmit)
-
         if (eventSubmit) {
-            // console.log('EVENT SUBMIT IN IF', eventSubmit)
             history.push(`/events/${eventId}`)
         }
     }

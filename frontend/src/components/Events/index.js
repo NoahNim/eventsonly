@@ -16,11 +16,6 @@ function EventsManager() {
         dispatch(getEvents())
     }, [dispatch])
 
-
-    console.log(useSelector((state) => state?.events))
-
-    console.log('THIS IS THE EVENTS VAR', eventsArray)
-
     return (
         <div className="events-page">
             {

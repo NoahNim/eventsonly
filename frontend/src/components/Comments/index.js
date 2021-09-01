@@ -23,7 +23,6 @@ function Comment() {
             }
             <ul>
                 {commentsArray?.map(comment => {
-                    console.log('USER STUFF', comment?.User)
                     if (comment?.eventId === parseInt(id)) {
                         const deleteCommentHandler = async () => {
                             if (sessionUser?.id === comment?.userId) {
@@ -32,8 +31,8 @@ function Comment() {
                         }
                         return (
                             <div className="comment-div">
-                                <p className="comment-name">{comment?.User?.firstName} {comment?.User?.lastName}</p>
-                                <li>{comment?.content}</li>
+                                <p key={comment?.User?.content} className="comment-name">{comment?.User?.firstName} {comment?.User?.lastName}</p>
+                                <li key={comment?.content}>{comment?.content}</li>
                                 {
                                     sessionUser?.id === comment?.userId ?  <div className="comment-buttons">
                                         <Link to={`${id}/comment/${comment?.id}/edit`}><button className="comment-button comment-edit" >Edit</button></Link>

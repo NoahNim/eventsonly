@@ -52,8 +52,6 @@ router.post("/new", requireAuth, validateCreateEvent, asyncHandler(async (req, r
 
     await event.save();
 
-    // console.log(event)
-
     return res.json({ events: event })
 }))
 
@@ -93,8 +91,6 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     let eventId = req.params.id;
     const event = await Event.findByPk(eventId);
 
-    console.log('THIS EVENT IN BACKEND', event);
-
     await event.destroy()
     return res.json();
 }))
@@ -114,16 +110,8 @@ router.get("/:eventId(\\d+)/comments'", asyncHandler(async (req, res) => {
 router.post("/:eventId(\\d+)/comment/new", requireAuth, validateComment, asyncHandler(async (req, res) => {
     let userId = req.user.id;
     let eventId = req.params.eventId;
-    // const event = await Event.findByPk(eventId);
-
-    console.log('THIS IS THE USER ID THING AAAAHHH', userId)
-
-
+  
     const { content } = req.body;
-
-    // const stringedEvent = String(eventId)
-    // const stringedUser = String(userId)
-
    
     const comment = await Comment.build({
         content,

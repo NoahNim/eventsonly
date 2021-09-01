@@ -51,9 +51,6 @@ export const getComments = (id) => async (dispatch) => {
 //New comment thunk
 
 export const createComment = (id, commentData) => async (dispatch) => {
-    console.log('THIS IS COMMENT DATA STUFF BEING FED FROM FONT END   ', commentData)
-    console.log("ID OF THE EVENT IN THUNK", typeof(id))
-
     const res = await csrfFetch(`/api/events/${id}/comment/new`, {
         method: "POST",
         headers: {
@@ -61,8 +58,6 @@ export const createComment = (id, commentData) => async (dispatch) => {
         },
         body: JSON.stringify(commentData)
     })
-
-    console.log('THIS IS THE RES THING IN COMMENT THUNK', res)
 
     if (res.ok) {
         const comment = await res.json();
@@ -97,7 +92,6 @@ export const deleteComment = (eventId, commentId) => async (dispatch) => {
 
     if (commentRes.ok) {
         const comment = await commentRes?.json();
-        console.log('COMMENT IN DELETE THUNK AHH', comment)
         dispatch(remove(comment))
     }
 }
