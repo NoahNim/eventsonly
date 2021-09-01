@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom';
-import { editEvent } from '../../store/event';
+import { editEvent, getEvents } from '../../store/event';
 import { Redirect } from 'react-router';
 
 function EditEvent() {
     const { id } = useParams();
+    
+    useEffect(() => {
+        dispatch(getEvents)
+    })
+
+    const events = useSelector((state) => state.events);
+    const eventsArray = Object.values(events);
+
+    const currentEvent = eventsArray.filter((event) => event.id === Number(id))
     const dispatch = useDispatch();
     const history = useHistory();
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
+    const [name, setName] = useState(currentEvent[0]?.name);
+    const [description, setDescription] = useState(currentEvent[0]?.description);
     const [date, setDate] = useState("");
-    const [eventPhoto, setEventPhoto] = useState("");
+    const [eventPhoto, setEventPhoto] = useState(currentEvent[0]?.eventPhoto);
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
 
