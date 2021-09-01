@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from 'react-router-dom'
 import { getComments, deleteComment } from "../../store/comment";
-// import './CommentsStyling';
+import './CommentsStyling.css';
 
 function Comment() {
     const { id } = useParams();
@@ -17,7 +17,7 @@ function Comment() {
     
     return (
         <div>
-            <Link to={`${id}/comment/new`}><button>New Comment</button></Link>
+            <Link to={`${id}/comment/new`}><button className="new-comment-button">New Comment</button></Link>
             <ul>
                 {commentsArray?.map(comment => {
                     if (comment?.eventId === parseInt(id)) {
@@ -29,9 +29,9 @@ function Comment() {
                         return (
                             <div>
                                 <li>{comment.content}</li>
-                                <div>
-                                    <Link to={`${id}/comment/${comment.id}/edit`}><button>Edit   </button></Link>
-                                    <Link><button onClick={deleteCommentHandler}>Delete</button></Link>
+                                <div className="comment-buttons">
+                                    <Link to={`${id}/comment/${comment.id}/edit`}><button className="comment-button comment-edit" >Edit</button></Link>
+                                    <Link><button className="comment-button comment-delete" onClick={deleteCommentHandler}>Delete</button></Link>
                                 </div>
                             </div>
                         )
