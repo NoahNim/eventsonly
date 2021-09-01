@@ -24,7 +24,9 @@ function Comment() {
                     console.log('USER STUFF', comment?.User)
                     if (comment?.eventId === parseInt(id)) {
                         const deleteCommentHandler = async () => {
-                            await dispatch(deleteComment(id, comment.id))
+                            if (sessionUser?.id === comment?.userId) {
+                                await dispatch(deleteComment(id, comment.id))
+                            }
                         }
                         return (
                             <div className="comment-div">
