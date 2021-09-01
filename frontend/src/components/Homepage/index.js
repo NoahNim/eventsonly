@@ -2,6 +2,7 @@ import React from 'react';
 import './homepage.css'
 import { Redirect } from 'react-router';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 function Home() {
     const sessionUser = useSelector((state) => state.session.user);
@@ -12,7 +13,7 @@ function Home() {
         <div className="home-container">
             <div className="logo-container">
                 <div className="logo-home">
-                    <img alt="logo" src="https://prject-omega-events.s3.us-west-2.amazonaws.com/Events+Only.png"></img>
+                    <Link to="/events"> <img alt="logo" src="https://prject-omega-events.s3.us-west-2.amazonaws.com/Events+Only.png"></img></Link>
                 </div>
             </div>
             <div className="home-info">
