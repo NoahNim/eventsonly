@@ -24,7 +24,7 @@ function EditEvent() {
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
 
-    if (!sessionUser) return <Redirect to="/events" />;
+    if (!sessionUser || sessionUser.id !== currentEvent[0]?.userId) return <Redirect to="/events" />;
 
 
 
