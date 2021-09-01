@@ -9,6 +9,7 @@ function Comment() {
     const dispatch = useDispatch();
     const comments = useSelector((state) => state?.comments);
     const commentsArray = Object.values(comments);
+    const sessionUser = useSelector((state) => state.session.user);
     
     useEffect(() => {
         dispatch(getComments(id));
@@ -29,10 +30,13 @@ function Comment() {
                             <div className="comment-div">
                                 <p className="comment-name">{comment?.User?.firstName} {comment?.User?.lastName}</p>
                                 <li>{comment?.content}</li>
-                                <div className="comment-buttons">
-                                    <Link to={`${id}/comment/${comment?.id}/edit`}><button className="comment-button comment-edit" >Edit</button></Link>
-                                    <Link><button className="comment-button comment-delete" onClick={deleteCommentHandler}>Delete</button></Link>
-                                </div>
+                                {
+                                    sessionUser?.id === comment?.userId ?  <div className="comment-buttons">
+                                        <Link to={`${id}/comment/${comment?.id}/edit`}><button className="comment-button comment-edit" >Edit</button></Link>
+                                        <Link><button className="comment-button comment-delete" onClick={deleteCommentHandler}>Delete</button></Link>
+                                    </div>
+                                        : null
+                                }
                             </div>
                         )
                     }
