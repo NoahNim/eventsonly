@@ -24,7 +24,7 @@ function EditComment() {
 
     console.log('TGIS IS LE CURRENT COMMENT AAAA', currentComment[0]);
 
-    if (!sessionUser) return <Redirect to="/events" />;
+    if (!sessionUser || sessionUser.id !== currentComment[0]?.userId) return <Redirect to="/events" />;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
