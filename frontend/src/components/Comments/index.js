@@ -26,8 +26,8 @@ function Comment() {
                             await dispatch(deleteComment(id, comment.id))
                         }
                         return (
-                            <div>
-                                <p>{comment?.User?.firstName} {comment?.User?.lastName}</p>
+                            <div className="comment-div">
+                                <p className="comment-name">{comment?.User?.firstName} {comment?.User?.lastName}</p>
                                 <li>{comment?.content}</li>
                                 <div className="comment-buttons">
                                     <Link to={`${id}/comment/${comment?.id}/edit`}><button className="comment-button comment-edit" >Edit</button></Link>
