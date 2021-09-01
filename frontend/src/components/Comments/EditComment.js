@@ -22,13 +22,10 @@ function EditComment() {
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
 
-    console.log('TGIS IS LE CURRENT COMMENT AAAA', currentComment[0]);
-
     if (!sessionUser || sessionUser.id !== currentComment[0]?.userId) return <Redirect to="/events" />;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(id, eventId)
 
         const userId = sessionUser.id
 
@@ -41,7 +38,6 @@ function EditComment() {
         const commentSubmit = await dispatch(editComment(eventId, id, payload))
             .catch(async (res) => {
                 const data = await res?.json();
-                console.log('NEW COMMENT RES.JSON DATA', data);
                 setErrors(data?.errors)
             })
 

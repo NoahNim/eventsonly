@@ -23,20 +23,15 @@ function CreateComment() {
 
         const eventId = Number(id);
 
-        console.log('THIS IS THE EVENT ID', eventId)
-
         const payload = {
             content,
             userId,
             eventId
         }
 
-        console.log('PAYLOAD FOR NEW COMMENT', payload)
-
         const commentSubmit = await dispatch(createComment(id, payload))
             .catch(async (res) => {
                 const data = await res?.json();
-                console.log('NEW COMMENT RES.JSON DATA', data);
                 setErrors(data?.errors)
             })
         
