@@ -18,7 +18,9 @@ function Comment() {
     
     return (
         <div className="all-comments-div">
-            <Link to={`${id}/comment/new`}><button className="new-comment-button">New Comment</button></Link>
+            {
+               sessionUser ? <Link to={`${id}/comment/new`}><button className="new-comment-button">New Comment</button></Link> : null
+            }
             <ul>
                 {commentsArray?.map(comment => {
                     console.log('USER STUFF', comment?.User)
