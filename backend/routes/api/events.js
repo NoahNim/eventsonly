@@ -102,7 +102,9 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 //Get comments
 router.get("/:eventId(\\d+)/comments'", asyncHandler(async (req, res) => {
     const eventId = req.params.eventId;
-    const comments = await Comment.findAll()
+    const comments = await Comment.findAll({
+        include: User
+    })
 
     return res.json({ comments })
 }))

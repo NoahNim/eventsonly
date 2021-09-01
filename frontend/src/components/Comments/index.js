@@ -20,17 +20,17 @@ function Comment() {
             <Link to={`${id}/comment/new`}><button className="new-comment-button">New Comment</button></Link>
             <ul>
                 {commentsArray?.map(comment => {
+                    console.log('USER STUFF', comment?.User)
                     if (comment?.eventId === parseInt(id)) {
                         const deleteCommentHandler = async () => {
-                            console.log('DELETE COMMENT HANDLER EVENT ID', id)
-                            console.log('DELETE COMMENT HANDLER COMMENT ID', comment.id)
                             await dispatch(deleteComment(id, comment.id))
                         }
                         return (
                             <div>
-                                <li>{comment.content}</li>
+                                <p>{comment?.User?.firstName} {comment?.User?.lastName}</p>
+                                <li>{comment?.content}</li>
                                 <div className="comment-buttons">
-                                    <Link to={`${id}/comment/${comment.id}/edit`}><button className="comment-button comment-edit" >Edit</button></Link>
+                                    <Link to={`${id}/comment/${comment?.id}/edit`}><button className="comment-button comment-edit" >Edit</button></Link>
                                     <Link><button className="comment-button comment-delete" onClick={deleteCommentHandler}>Delete</button></Link>
                                 </div>
                             </div>
