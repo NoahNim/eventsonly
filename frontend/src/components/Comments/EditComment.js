@@ -8,6 +8,11 @@ import { Redirect } from 'react-router';
 function EditComment() {
     const { id, eventId } = useParams();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getComments(eventId));
+    }, [dispatch, eventId])
+
     const history = useHistory();
     const comments = useSelector((state) => state.comments)
     const commentsArray = Object.values(comments)
@@ -17,13 +22,7 @@ function EditComment() {
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
 
-
     console.log('TGIS IS LE CURRENT COMMENT AAAA', currentComment[0]);
-    
-    useEffect(() => {
-        dispatch(getComments(eventId));
-    }, [dispatch, eventId])
-
 
     if (!sessionUser) return <Redirect to="/events" />;
 
