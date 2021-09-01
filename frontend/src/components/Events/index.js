@@ -9,10 +9,13 @@ function EventsManager() {
     const dispatch = useDispatch();
     const events = useSelector((state) => state?.events);
     const eventsArray = Object.values(events);
+    const sessionUser = useSelector((state) => state.session.user);
+
 
     useEffect(() => {
         dispatch(getEvents())
     }, [dispatch])
+
 
     console.log(useSelector((state) => state?.events))
 
@@ -20,7 +23,9 @@ function EventsManager() {
 
     return (
         <div className="events-page">
-            <div><Link to="/events/new"><button className="new-event-button">+ New Event +</button></Link></div>
+            {
+                sessionUser ? <div><Link to="/events/new"><button className="new-event-button">+ New Event +</button></Link></div> : null
+            }
             <div className="events-list-container">
             <ul className="events-list">
                 {

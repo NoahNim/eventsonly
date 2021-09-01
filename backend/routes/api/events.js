@@ -3,7 +3,7 @@ const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { Event, User } = require("../../db/models");
+const { Event, User, Comment } = require("../../db/models");
 
 const router = express.Router();
 
@@ -19,6 +19,15 @@ const validateCreateEvent = [
         .withMessage("Please give this event a photo"),
     handleValidationErrors
 ]
+
+
+const validateComment = [
+    check("content")
+        .exists({ checkFalsy: true })
+        .withMessage("Please input a comment to be posted"),
+    handleValidationErrors
+]
+
 
 // Get events
 router.get("/", asyncHandler(async (req, res) => {
@@ -88,6 +97,76 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 
     await event.destroy()
     return res.json();
-} ))
+}))
+
+//Get comments
+router.get("/:eventId(\\d+)/comments'", asyncHandler(async (req, res) => {
+    const eventId = req.params.eventId;
+    const comments = await Comment.findAll({
+        include: User
+    })
+
+    return res.json({ comments })
+}))
+
+//Create Comment
+
+router.post("/:eventId(\\d+)/comment/new", requireAuth, validateComment, asyncHandler(async (req, res) => {
+    let userId = req.user.id;
+    let eventId = req.params.eventId;
+    // const event = await Event.findByPk(eventId);
+
+    console.log('THIS IS THE USER ID THING AAAAHHH', userId)
+
+
+    const { content } = req.body;
+
+    // const stringedEvent = String(eventId)
+    // const stringedUser = String(userId)
+
+   
+    const comment = await Comment.build({
+        content,
+        userId,
+        eventId
+    })
+
+    await comment.save();
+
+    return res.json({ comments: comment })
+}))
+
+//Edit comment
+router.put("/:eventId(\\d+)/comment/:id(\\d+)/edit", requireAuth, validateComment, asyncHandler(async (req, res) => {
+    let userId = req.user.id;
+    let eventId = req.params.eventId;
+    let commentId = req.params.id;
+
+    const comment = await Comment.findByPk(commentId);
+
+    const { content } = req.body;
+
+    const updatedComment = {
+        content,
+        userId,
+        eventId
+    }
+
+    await comment.update(updatedComment)
+
+    return res.json({ comment })
+}))
+
+//Delete comment
+router.delete("/:eventId(\\d+)/comment/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
+    let commentId = req.params.id;
+
+    const comment = await Comment.findByPk(commentId);
+
+    const resComment = res.json(comment);
+
+    await comment.destroy()
+    return resComment;
+}))
 
 module.exports = router;

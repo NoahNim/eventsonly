@@ -1,0 +1,50 @@
+.comment-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comment-button {
+    margin: 10px;
+}
+
+.comment-delete {
+    background-color: rgb(250, 60, 60);
+    border: solid rgb(250, 60, 60);
+    border-radius: 10px;
+    font-size: 8px;
+    font-weight: 500;
+}
+
+.comment-edit {
+    background-color: rgb(151, 199, 241);
+    border: solid rgb(151, 199, 241);
+    border-radius: 10px;
+    font-size: 8px;
+    font-weight: 500;
+}
+
+.new-comment-button {
+    background-color: rgb(151, 199, 241);
+    border: solid rgb(151, 199, 241);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.all-comments-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment-div {
+      border: 1px solid rgb(151, 199, 241);
+    border-radius: 15px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.comment-name {
+    font-size: 14px;
+    font-weight: bold;
+}
