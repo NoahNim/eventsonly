@@ -16,7 +16,7 @@ function Comment() {
 
     
     return (
-        <div>
+        <div className="all-comments-div">
             <Link to={`${id}/comment/new`}><button className="new-comment-button">New Comment</button></Link>
             <ul>
                 {commentsArray?.map(comment => {

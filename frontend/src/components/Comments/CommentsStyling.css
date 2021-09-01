@@ -16,9 +16,23 @@
 }
 
 .comment-edit {
-        background-color: rgb(151, 199, 241);
+    background-color: rgb(151, 199, 241);
     border: solid rgb(151, 199, 241);
     border-radius: 10px;
     font-size: 8px;
     font-weight: 500;
+}
+
+.new-comment-button {
+    background-color: rgb(151, 199, 241);
+    border: solid rgb(151, 199, 241);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.all-comments-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
