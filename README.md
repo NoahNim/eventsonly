@@ -17,6 +17,28 @@ On an event page displayed on ```/events/:id``` users can see the event info.
 
 <img width="1260" alt="Event" src="https://user-images.githubusercontent.com/8650503/131810429-d858ae86-5aab-45b8-9fd4-b703f940b72a.png">
 
+## Application Architecture
+
+As noted, Events Only is a full stack application.
+
+React Front End ----> Express BackEnd ----> PostgresSQL Database
+
+- The React front end uses a Redux store for state management and API calls. It uses JSX and CSS to display the UI to the user.
+- The Express back end fetches data from the PostgresSQL database using express router.
+- The PostgresSQL Database is four tables Users, Events, Comments, and RSVP's.
+
+
+## Technologies used
+- React
+- Express
+- PostgresSQL
+- JavaScript
+
+## Final Thoughts and Next Steps
+
+This was my first completed solo full stack application using my own ideas. It was a very rewarding experience and I learned a lot from it. My next steps are likely going to be to refactor a lot of code to make it more optimal, though it works for a project and use case of this scale.
+
+# Set Up for Local Hosting
 
 ## Installation
 
