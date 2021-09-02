@@ -13,7 +13,7 @@ Users can see here a list of current and upcoming events posted to the app on th
 
 <img width="1278" alt="Events" src="https://user-images.githubusercontent.com/8650503/131810456-4722da82-5c9b-4ef6-8d3e-69719e802a62.png">
 
-On an event page displayed on ```/events/:id``` users can see the event info.
+On an event page displayed on ```/events/:id``` users can see the event info and its comments, they can comment on the event.
 
 <img width="1260" alt="Event" src="https://user-images.githubusercontent.com/8650503/131810429-d858ae86-5aab-45b8-9fd4-b703f940b72a.png">
 
