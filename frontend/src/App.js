@@ -13,11 +13,12 @@ import Event from './components/Events/Event';
 import EditEvent from './components/Events/editEvent';
 import CreateComment from './components/Comments/NewComment';
 import EditComment from './components/Comments/EditComment';
+import Footer from './components/Footer';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     document.title = "Events Only"
@@ -63,6 +64,7 @@ function App() {
           </Route>
         </Switch>
       )}
+    <Footer />
     </>
   );
 }
