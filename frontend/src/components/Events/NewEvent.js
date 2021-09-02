@@ -37,7 +37,7 @@ function CreateEvent() {
                 setErrors(data?.errors);
             });
 
-        let eventId = eventSubmit.event.events.id
+        let eventId = eventSubmit?.event?.events?.id
 
         if (eventSubmit) {
             history.push(`/events/${eventId}`)
