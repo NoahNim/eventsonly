@@ -1,7 +1,22 @@
 # Events Only
 
 ## About
-Events Only is a website for creating, viewing, and commenting on upcoming events. The live server is hosted here: https://events-only.herokuapp.com/events
+Events Only is a fullstack web application for creating, viewing, and commenting on upcoming events. The live server is hosted here: https://events-only.herokuapp.com/events. It uses React and NodeJS/Express to accomplsh this goal.
+
+
+## At a Glance
+
+
+<img width="1280" alt="SpashPage" src="https://user-images.githubusercontent.com/8650503/131809404-f24e8c8d-c938-41ef-8ff4-a2814665b76b.png">
+
+Users can see here a list of current and upcoming events posted to the app on the ```/events``` route and create new events.
+
+<img width="1278" alt="Events" src="https://user-images.githubusercontent.com/8650503/131810456-4722da82-5c9b-4ef6-8d3e-69719e802a62.png">
+
+On an event page displayed on ```/events/:id``` users can see the event info.
+
+<img width="1260" alt="Event" src="https://user-images.githubusercontent.com/8650503/131810429-d858ae86-5aab-45b8-9fd4-b703f940b72a.png">
+
 
 ## Installation
 
