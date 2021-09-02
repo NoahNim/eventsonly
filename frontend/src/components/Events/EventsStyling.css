@@ -12,7 +12,7 @@
     margin: 15px;
     /* background-color: rgb(151, 199, 241); */
     padding: 15px;
-    border: solid 1.45px  rgb(151, 199, 241);
+    border: solid 1.45px  rgb(213, 231, 247);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -33,8 +33,8 @@
 }
 
 .new-event-button {
-    background-color: rgb(151, 199, 241);
-    border: solid rgb(151, 199, 241);
+    background-color: rgb(213, 231, 247);
+    border: solid rgb(213, 231, 247);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
@@ -65,16 +65,16 @@
 }
 
 .event-edit {
-    background-color: rgb(151, 199, 241);
-    border: solid rgb(151, 199, 241);
+    background-color: rgb(213, 231, 247);
+    border: solid rgb(213, 231, 247);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
 }
 
 .event-delete {
-    background-color: rgb(250, 60, 60);
-     border: solid rgb(250, 60, 60);
+    background-color: rgb(252, 177, 177);
+     border: solid rgb(252, 177, 177);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
@@ -87,7 +87,7 @@
     width: 500px;
     border-radius: 10px;
     margin-top: 10px;
-    border: 2px solid rgb(151, 199, 241);
+    border: 2px solid rgb(213, 231, 247);
     border-radius: 10px;
     height: 80%;
 }
@@ -121,7 +121,7 @@
 }
 
 .new-event-container > h2 {
-    color: rgb(151, 199, 241);
+    color: rgb(213, 231, 247);
 }
 
 .event-description {
