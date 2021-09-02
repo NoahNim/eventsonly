@@ -2,7 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 80px;
+    border-top: 1px solid rgb(151, 199, 241);
+    margin-bottom: 0px;
+    height: 15%;
+    width: auto;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .footer-list {
