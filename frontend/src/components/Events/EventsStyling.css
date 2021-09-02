@@ -10,9 +10,8 @@
 
 .event-container {
     margin: 15px;
-    /* background-color: rgb(151, 199, 241); */
     padding: 15px;
-    border: solid 1.45px  rgb(213, 231, 247);
+    /* border: solid 1.45px  rgb(213, 231, 247); */
     border-radius: 10px;
     display: flex;
     flex-direction: column;

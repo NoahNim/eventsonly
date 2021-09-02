@@ -25,15 +25,6 @@ const validateCreateEvent = [
     handleValidationErrors
 ]
 
-    // .custom((date) => {
-    //     const currentDate = new Date();
-
-    //     if (date < currentDate) {
-    //         throw new Error("Date must not be before todays date.")
-    //     }
-    //     return
-    // }),
-
 const validateComment = [
     check("content")
         .exists({ checkFalsy: true })
