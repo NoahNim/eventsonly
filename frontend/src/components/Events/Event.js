@@ -50,8 +50,8 @@ function Event() {
                                     </div>
                                     {
                                         sessionUser?.id === event?.userId ? <div className="event-buttons" >
-                                            <Link to={`/events/${event.id}/edit`}><button className="event-button event-edit"> [\] Edit [\]</button></Link>
-                                            <button className="event-button event-delete" onClick={deleteEventHandler}> - Delete -</button>
+                                            <Link to={`/events/${event.id}/edit`}><button className="event-button event-edit"> [\] Edit</button></Link>
+                                            <button className="event-button event-delete" onClick={deleteEventHandler}> - Delete</button>
                                         </div>
                                             : null
                                     }

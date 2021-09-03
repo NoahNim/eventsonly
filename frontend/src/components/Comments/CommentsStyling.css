@@ -8,24 +8,24 @@
 }
 
 .comment-delete {
-    background-color: rgb(250, 60, 60);
-    border: solid rgb(250, 60, 60);
+    background-color: rgb(252, 177, 177);
+    border: solid rgb(252, 177, 177);
     border-radius: 10px;
     font-size: 8px;
     font-weight: 500;
 }
 
 .comment-edit {
-    background-color: rgb(151, 199, 241);
-    border: solid rgb(151, 199, 241);
+    background-color: rgb(213, 231, 247);
+    border: solid rgb(213, 231, 247);
     border-radius: 10px;
     font-size: 8px;
     font-weight: 500;
 }
 
 .new-comment-button {
-    background-color: rgb(151, 199, 241);
-    border: solid rgb(151, 199, 241);
+    background-color: rgb(213, 231, 247);
+    border: solid rgb(213, 231, 247);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
@@ -38,9 +38,9 @@
 }
 
 .comment-div {
-    border: 1px solid rgb(151, 199, 241);
+    border: 1px solid rgb(213, 231, 247);
     border-radius: 15px;
-    margin: 2px;
+    margin: 5px;
     padding: 5px;
     width: 320px;
     height: 100px;

@@ -7,19 +7,23 @@ const { Event, User, Comment } = require("../../db/models");
 
 const router = express.Router();
 
+const currentDate = new Date();
+
 const validateCreateEvent = [
     check('name')
         .exists({ checkFalsy: true })
         .withMessage("Please enter a name for your event!"),
     check("date")
         .exists({ checkFalsy: true })
-        .withMessage("Please enter a date for the event"),
+        .withMessage("Please enter a date for the event")
+        .isAfter(currentDate.toString())
+        .withMessage("Please choose a date after todays date.")
+       ,
     check("eventPhoto")
         .exists({ checkFalsy: true })
         .withMessage("Please give this event a photo"),
     handleValidationErrors
 ]
-
 
 const validateComment = [
     check("content")
