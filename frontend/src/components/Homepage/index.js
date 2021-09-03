@@ -17,7 +17,9 @@ function Home() {
                 </div>
             </div>
             <div className="home-info">
-                <p>Are you tired of trying to find events on sites like Facebook and Twitter, only to be flooded with a news feed that's unrelated? A news feed full of people posting what you consider to be nonsense and arguing. You only wish that you could find an event you and your friends are interested in, and connecting with them! Well now you can, with Events Only!</p>
+                <p>Are you tired of trying to find events on sites like Facebook and Twitter, only to be flooded with a news feed that's unrelated? A news feed full of people posting what you consider to be nonsense and arguing. You only wish that you could find an event you and your friends are interested in, and connect with them! Well now you can, with Events Only!</p>
+                <p></p>
+                <p>To get started click the logo and see a list of events!</p>
             </div>
         </div>
     )
