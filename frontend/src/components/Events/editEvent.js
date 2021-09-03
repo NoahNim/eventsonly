@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Link } from 'react-router-dom';
 import { editEvent, getEvents } from '../../store/event';
 import { Redirect } from 'react-router';
 
 function EditEvent() {
     const { id } = useParams();
-    
+
     useEffect(() => {
         dispatch(getEvents)
     })
@@ -96,17 +96,18 @@ function EditEvent() {
                     </input>
                 </div>
                 <div className="new-event-div">
-                <label className="signup-label">
-                    Event Photo URL
-                </label>
-                <input
-                    type="text"
-                    value={eventPhoto}
-                    onChange={(e) => setEventPhoto(e.target.value)}
-                // required
+                    <label className="signup-label">
+                        Event Photo URL
+                    </label>
+                    <input
+                        type="text"
+                        value={eventPhoto}
+                        onChange={(e) => setEventPhoto(e.target.value)}
+                    // required
                     />
                 </div>
                 <button className="new-event-button new-event-creator" type="submit">Edit</button>
+                <Link to="/events"><button className="new-event-button new-event-creator">Cancel</button></Link>
             </form>
         </div>
     )

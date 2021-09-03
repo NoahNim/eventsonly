@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams, Link } from 'react-router-dom'
 import { editComment, getComments } from "../../store/comment";
 import { Redirect } from 'react-router';
 
@@ -65,6 +65,7 @@ function EditComment() {
                         ></textarea>
                     </div>
                     <button type="submit" className="new-event-button new-event-creator">Edit</button>
+                    <Link to="/events"><button className="new-event-button new-event-creator">Cancel</button></Link>
                 </form>
             </div>
         )
