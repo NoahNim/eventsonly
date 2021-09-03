@@ -29,6 +29,10 @@
 .event-image {
     border-radius: 10px;
     margin-bottom: 10px;
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+    object-fit: fill;
 }
 
 .new-event-button {

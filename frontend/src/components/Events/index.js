@@ -31,7 +31,7 @@ function EventsManager() {
                             return (
                                 <div className="event-container">
                                     <h5 className="event-name" key={event.name}>{event.name}</h5>
-                                    <Link className="event-image-link" key={event.id} to={`/events/${event?.id}`}> <img className="event-image" key={event.eventPhoto} alt="eventPhoto" src={event?.eventPhoto} height="250" width="250"></img></Link>
+                                    <Link className="event-image-link" key={event.id} to={`/events/${event?.id}`}> <img className="event-image" key={event.eventPhoto} alt="eventPhoto" src={event?.eventPhoto} ></img></Link>
                                 </div>
                             )
                         })
@@ -41,5 +41,7 @@ function EventsManager() {
         </div>
     )
 }
+
+// height = "250" width = "250"
 
 export default EventsManager
