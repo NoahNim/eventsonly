@@ -65,7 +65,7 @@ function EditComment() {
                         ></textarea>
                     </div>
                     <button type="submit" className="new-event-button new-event-creator">Edit</button>
-                    <Link to="/events"><button className="new-event-button new-event-creator">Cancel</button></Link>
+                    <Link to={`/events/${eventId}`}><button className="new-event-button new-event-creator">Cancel</button></Link>
                 </form>
             </div>
         )
