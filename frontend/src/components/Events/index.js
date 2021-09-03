@@ -18,7 +18,7 @@ function EventsManager() {
 
     return (
         <div className="events-page">
-            <h5>Here is is a list of upcoming events! Click on on you're interested in!</h5>
+            <h5>Here is is a list of upcoming events! Click on an event you're interested in!</h5>
             {
                 sessionUser ? <div className="new-event-info">
                     <h5>If you wish to create a new event, and click the New Event button!</h5>
