@@ -13,9 +13,9 @@
     padding: 15px;
     /* border: solid 1.45px  rgb(213, 231, 247); */
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: inline-block;
+    text-align: center;
+    /* width: 100%; */
 }
 
 .events-page {
@@ -23,7 +23,9 @@
     margin-right: 25px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
+    width: 100%;
 }
 
 .event-image {
