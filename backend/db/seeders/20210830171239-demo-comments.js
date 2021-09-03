@@ -14,7 +14,7 @@ module.exports = {
     await queryInterface.bulkInsert("Comments", [{
       content: "Wow this looks....great!",
       userId: 1,
-      eventId: 2,
+      eventId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     }])
