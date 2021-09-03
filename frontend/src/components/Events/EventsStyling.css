@@ -133,7 +133,23 @@
 
 .new-event-info {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.signup-label {
+    margin-left: 60px;
+}
+
+.date-label {
+    margin-left: 30px;
+}
+
+.desc-label {
+    margin-left: 30px;
+}
+
+.name-label {
+    margin-left: 15px;
+}

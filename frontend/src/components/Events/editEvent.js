@@ -68,7 +68,7 @@ function EditEvent() {
                     </ul>
                 </div>
                 <div className="new-event-div">
-                    <label>Event Name</label>
+                    <label className="name-label">Event Name</label>
                     <input
                         type="test"
                         value={name}
@@ -77,7 +77,7 @@ function EditEvent() {
                     ></input>
                 </div>
                 <div className="new-event-div">
-                    <label>Description</label>
+                    <label className="desc-label">Description</label>
                     <textarea
                         className="description"
                         value={description}
@@ -85,7 +85,7 @@ function EditEvent() {
                     ></textarea>
                 </div>
                 <div className="new-event-div">
-                    <label>Date</label>
+                    <label className="date-label">Date</label>
                     <input
                         type="date"
                         min="2021-01-31"
