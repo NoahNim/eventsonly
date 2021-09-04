@@ -67,6 +67,7 @@
 
 .single-event-image {
     border-radius: 6px;
+    object-fit: cover;
 }
 
 .event-edit {
