@@ -24,7 +24,10 @@ const validateCreateEvent = [
        ,
     check("eventPhoto")
         .exists({ checkFalsy: true })
-        .withMessage("Please give this event a photo"),
+        .withMessage("Please give this event a photo")
+        .isURL()
+        .withMessage("Please make sure the image is a URL")
+    ,
     handleValidationErrors
 ]
 
