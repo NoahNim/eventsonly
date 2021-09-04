@@ -57,15 +57,18 @@ function EditComment() {
                         </ul>
                     </div>
                     <div className="new-event-div">
-                        <label>Your Comment</label>
+                        <label className="new-comment-label">Your Comment</label>
                         <textarea
+                            className="comment-content-input"
                             type="test"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
                         ></textarea>
                     </div>
-                    <button type="submit" className="new-event-button new-event-creator">Edit</button>
-                    <Link to="/events"><button className="new-event-button new-event-creator">Cancel</button></Link>
+                    <div className="event-container">
+                        <Link to={`/events/${eventId}`}><button className="new-event-button new-event-creator">Cancel</button></Link>
+                        <button type="submit" className="new-event-button new-event-creator">Edit</button>
+                    </div>
                 </form>
             </div>
         )

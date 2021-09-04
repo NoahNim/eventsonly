@@ -7,12 +7,15 @@ const { Event, User, Comment } = require("../../db/models");
 
 const router = express.Router();
 
-const currentDate = new Date();
+const currentDate = new Date().toLocaleDateString()
 
 const validateCreateEvent = [
     check('name')
         .exists({ checkFalsy: true })
-        .withMessage("Please enter a name for your event!"),
+        .withMessage("Please enter a name for your event!")
+        .isLength({ max: 100 })
+        .withMessage("Names can't be longer than 100 characters")
+        ,
     check("date")
         .exists({ checkFalsy: true })
         .withMessage("Please enter a date for the event")
@@ -21,14 +24,19 @@ const validateCreateEvent = [
        ,
     check("eventPhoto")
         .exists({ checkFalsy: true })
-        .withMessage("Please give this event a photo"),
+        .withMessage("Please give this event a photo")
+        .isURL()
+        .withMessage("Please make sure the image is a URL")
+    ,
     handleValidationErrors
 ]
 
 const validateComment = [
     check("content")
         .exists({ checkFalsy: true })
-        .withMessage("Please input a comment to be posted"),
+        .withMessage("Please input a comment to be posted")
+        .isLength({ max: 9990 })
+        .withMessage("Content can't be more than 9999 characters"),
     handleValidationErrors
 ]
 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { createEvent } from '../../store/event';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function CreateEvent() {
     const dispatch = useDispatch();
@@ -93,7 +94,10 @@ function CreateEvent() {
                         // required
                         />
                     </div>
-                    <button type="submit" className="new-event-button new-event-creator">Create</button>
+                    <div className="event-maker-button-div">
+                        <Link to={`/events`}><button className="new-event-button new-event-creator">Cancel</button></Link>
+                        <button type="submit" className="new-event-button new-event-creator">Create</button>
+                    </div>
                 </form>
             </div>
         )

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams, Link } from 'react-router-dom'
 import { createComment } from "../../store/comment";
 import { Redirect } from 'react-router';
 
@@ -10,7 +10,7 @@ function CreateComment() {
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
-    const { id } = useParams();
+    const { id, eventId } = useParams();
 
     if (!sessionUser) return <Redirect to="/events" />;
 
@@ -34,7 +34,7 @@ function CreateComment() {
                 const data = await res?.json();
                 setErrors(data?.errors)
             })
-        
+
         if (commentSubmit) {
             history.push(`/events/${eventId}`)
         }
@@ -51,14 +51,19 @@ function CreateComment() {
                         </ul>
                     </div>
                     <div className="new-event-div">
-                        <label>Your Comment</label>
-                        <input
-                            type="test"
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
-                        ></input>
+                        <label className="new-comment-label">Your Comment</label>
+                        <div>
+                            <textarea
+                                className="comment-content-input"
+                                value={content}
+                                onChange={(e) => setContent(e.target.value)}
+                            />
+                        </div>
                     </div>
-                    <button type="submit" className="new-event-button new-event-creator">Create</button>
+                    <div className="event-container">
+                        <Link to={`/events/${id}`}><button className="new-event-button new-event-creator">Cancel</button></Link>
+                        <button type="submit" className="new-event-button new-event-creator">Create</button>
+                    </div>
                 </form>
             </div>
         )

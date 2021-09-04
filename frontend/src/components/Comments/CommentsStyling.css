@@ -59,3 +59,12 @@
     align-items: center;
     width: 50px;
 } */
+
+.comment-content-input{
+    height: 100px;
+    width: 300px;
+}
+
+.new-comment-label {
+    margin-left: 70px;
+}
