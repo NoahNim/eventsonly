@@ -7,7 +7,7 @@ const { Event, User, Comment } = require("../../db/models");
 
 const router = express.Router();
 
-const currentDate = new Date();
+const currentDate = new Date().toLocaleDateString()
 
 const validateCreateEvent = [
     check('name')
