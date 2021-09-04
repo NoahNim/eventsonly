@@ -106,8 +106,10 @@ function EditEvent() {
                     // required
                     />
                 </div>
-                <button className="new-event-button new-event-creator" type="submit">Edit</button>
-                <Link to={`/events/${id}`}><button className="new-event-button new-event-creator">Cancel</button></Link>
+                <div className="event-container">
+                    <Link to={`/events/${id}`}><button className="new-event-button new-event-creator">Cancel</button></Link>
+                    <button className="new-event-button new-event-creator" type="submit">Edit</button>
+                </div>
             </form>
         </div>
     )
