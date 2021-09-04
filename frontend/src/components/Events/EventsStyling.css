@@ -31,6 +31,9 @@
 .event-image {
     border-radius: 10px;
     margin-bottom: 10px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
 }
 
 .new-event-button {
@@ -39,6 +42,7 @@
     border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
+    margin: 5px;
 }
 
 .single-event {
@@ -63,6 +67,7 @@
 
 .single-event-image {
     border-radius: 6px;
+    object-fit: cover;
 }
 
 .event-edit {
@@ -139,3 +144,7 @@
     flex-direction: column;
 }
 
+.event-maker-button-div {
+    display: flex;
+    justify-content: space-between;
+}
