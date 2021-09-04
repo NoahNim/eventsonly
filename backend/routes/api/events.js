@@ -12,7 +12,10 @@ const currentDate = new Date();
 const validateCreateEvent = [
     check('name')
         .exists({ checkFalsy: true })
-        .withMessage("Please enter a name for your event!"),
+        .withMessage("Please enter a name for your event!")
+        .isLength({ max: 100 })
+        .withMessage("Names can't be longer than 100 characters")
+        ,
     check("date")
         .exists({ checkFalsy: true })
         .withMessage("Please enter a date for the event")
@@ -28,7 +31,9 @@ const validateCreateEvent = [
 const validateComment = [
     check("content")
         .exists({ checkFalsy: true })
-        .withMessage("Please input a comment to be posted"),
+        .withMessage("Please input a comment to be posted")
+        .isLength({ max: 9990 })
+        .withMessage("Content can't be more than 9999 characters"),
     handleValidationErrors
 ]
 

@@ -57,8 +57,9 @@ function EditComment() {
                         </ul>
                     </div>
                     <div className="new-event-div">
-                        <label>Your Comment</label>
+                        <label className="new-comment-label">Your Comment</label>
                         <textarea
+                            className="comment-content-input"
                             type="test"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}

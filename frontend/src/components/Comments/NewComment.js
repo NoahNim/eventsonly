@@ -51,12 +51,14 @@ function CreateComment() {
                         </ul>
                     </div>
                     <div className="new-event-div">
-                        <label>Your Comment</label>
-                        <input
-                            type="test"
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
-                        ></input>
+                        <label className="new-comment-label">Your Comment</label>
+                        <div>
+                            <textarea
+                                className="comment-content-input"
+                                value={content}
+                                onChange={(e) => setContent(e.target.value)}
+                            />
+                        </div>
                     </div>
                     <div className="event-container">
                         <Link to={`/events/${id}`}><button className="new-event-button new-event-creator">Cancel</button></Link>
