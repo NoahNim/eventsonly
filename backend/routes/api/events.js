@@ -26,7 +26,10 @@ const validateCreateEvent = [
         .exists({ checkFalsy: true })
         .withMessage("Please give this event a photo")
         .isURL()
-        .withMessage("Please make sure the image is a URL")
+        .withMessage("Please make sure the image is a URL"),
+    check("description")
+        .isLength({ max: 9999 })
+        .withMessage("Description must be less than 9999 characters")
     ,
     handleValidationErrors
 ]
@@ -35,7 +38,7 @@ const validateComment = [
     check("content")
         .exists({ checkFalsy: true })
         .withMessage("Please input a comment to be posted")
-        .isLength({ max: 9990 })
+        .isLength({ max: 9999 })
         .withMessage("Content can't be more than 9999 characters"),
     handleValidationErrors
 ]
