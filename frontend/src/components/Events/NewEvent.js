@@ -95,7 +95,7 @@ function CreateEvent() {
                         />
                     </div>
                     <div className="event-maker-button-div">
-                        <Link to={`/events`}><button className="new-event-button new-event-creator">Cancel</button></Link>
+                        <Link to={`/events`}><button className="new-event-button new-event-creator cancel">Cancel</button></Link>
                         <button type="submit" className="new-event-button new-event-creator">Create</button>
                     </div>
                 </form>
