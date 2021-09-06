@@ -24,6 +24,11 @@ function EventsManager() {
                     <h5>If you wish to create a new event click the New Event button!</h5>
                     <Link to="/events/new"><button className="new-event-button">+ New Event +</button></Link></div> : null
             }
+            {
+                !sessionUser ? <div className="new-event-info">
+                    <h5>Or if you wish to create an event, login if you have an account or signup if you do not!</h5>
+                    <Link to="/events/new"><button className="new-event-button">+ New Event +</button></Link></div> : null
+            }
             <div className="events-list-container">
                 <ul className="events-list">
                     {
