@@ -61,7 +61,7 @@ function CreateComment() {
                         </div>
                     </div>
                     <div className="event-container">
-                        <Link to={`/events/${id}`}><button className="new-event-button new-event-creator">Cancel</button></Link>
+                        <Link to={`/events/${id}`}><button className="new-event-button new-event-creator cancel">Cancel</button></Link>
                         <button type="submit" className="new-event-button new-event-creator">Create</button>
                     </div>
                 </form>
