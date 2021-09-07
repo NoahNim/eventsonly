@@ -35,7 +35,7 @@ React Front End ----> Express BackEnd ----> PostgresSQL Database
 
 ## Final Thoughts and Next Steps
 
-This was my first completed solo full stack application using my own ideas. It was a very rewarding experience and I learned a lot from it. My next steps are likely going to be to refactor a lot of code to make it more optimal, though it works for a project and use case of this scale.
+This was my first completed solo full stack application using my own ideas. It was a very rewarding experience and I learned a lot from it. My next steps are likely going to be to refactor a lot of code to make it more optimal, though it works for a project and use case of this scale. I'm probably going to change the images from having the user put in a url to instead just upload an image from their computer (or both). Also will add the ability to RSVP and to have User Profiles.
 
 # Set Up for Local Hosting
 
