@@ -6,16 +6,15 @@ Events Only is a fullstack web application for creating, viewing, and commenting
 
 ## At a Glance
 
-
-<img width="1280" alt="SpashPage" src="https://user-images.githubusercontent.com/8650503/131809404-f24e8c8d-c938-41ef-8ff4-a2814665b76b.png">
+<img width="1280" alt="Screen Shot 2021-09-07 at 12 31 55 AM" src="https://user-images.githubusercontent.com/8650503/132303278-01aa1411-945a-4eaa-b01c-e1dc1800b168.png">
 
 Users can see here a list of current and upcoming events posted to the app on the ```/events``` route and create new events.
 
-<img width="1278" alt="Events" src="https://user-images.githubusercontent.com/8650503/131810456-4722da82-5c9b-4ef6-8d3e-69719e802a62.png">
+<img width="1280" alt="Screen Shot 2021-09-07 at 12 30 09 AM" src="https://user-images.githubusercontent.com/8650503/132303392-625c0f24-7bb0-492c-a330-747156dde230.png">
 
 On an event page displayed on ```/events/:id``` users can see the event info and its comments, they can comment on the event.
 
-<img width="1260" alt="Event" src="https://user-images.githubusercontent.com/8650503/131810429-d858ae86-5aab-45b8-9fd4-b703f940b72a.png">
+<img width="1280" alt="Screen Shot 2021-09-07 at 12 31 09 AM" src="https://user-images.githubusercontent.com/8650503/132303465-7ac7c97c-a5a0-4163-8639-adc24ccaae55.png">
 
 ## Application Architecture
 
