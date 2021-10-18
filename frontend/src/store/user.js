@@ -21,3 +21,11 @@ const edit = (user) => ({
     type: EDIT,
     user
 })
+
+const initialState = {}
+
+const users = (state = initialState, action) => {
+
+}
+
+export default users;
