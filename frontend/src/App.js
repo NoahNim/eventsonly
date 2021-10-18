@@ -63,7 +63,7 @@ function App() {
           <Route path="/events/:eventId/comment/:id/edit">
             <EditComment />
           </Route>
-          <Route path="/user-profile">
+          <Route path="/users/:id">
             <UserProfile />
           </Route>
         </Switch>

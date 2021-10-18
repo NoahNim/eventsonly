@@ -13,7 +13,7 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email.')
-    .isLength({ max: 100 })  
+    .isLength({ max: 100 })
   ,
   check('username')
     .exists({ checkFalsy: true })
@@ -32,7 +32,7 @@ const validateSignup = [
   check('firstName')
     .exists({ checkFalsy: true })
     .withMessage("Please put in a first name.")
-    .isLength({  max: 100 })
+    .isLength({ max: 100 })
     .withMessage("First names can not be more than 100 characters"),
   check('lastName')
     .exists({ checkFalsy: true })
@@ -48,7 +48,7 @@ router.post(
   validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, username, firstName, lastName, biography, profilePhoto } = req.body;
-    const user = await User.signup({ email, username, password, firstName, lastName, biography, profilePhoto  });
+    const user = await User.signup({ email, username, password, firstName, lastName, biography, profilePhoto });
 
     await setTokenCookie(res, user);
 
@@ -57,5 +57,14 @@ router.post(
     });
   }),
 );
+
+router.get('/:id', asyncHandler(async (req, res) => {
+  userId = req.params.id;
+
+  const user = User.findByPk(userId);
+
+  return res.json({ user });
+})
+)
 
 module.exports = router;
