@@ -14,6 +14,7 @@ import EditEvent from './components/Events/editEvent';
 import CreateComment from './components/Comments/NewComment';
 import EditComment from './components/Comments/EditComment';
 import Footer from './components/Footer';
+import UserProfile from './components/UserProfile';
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +62,9 @@ function App() {
           </Route>
           <Route path="/events/:eventId/comment/:id/edit">
             <EditComment />
+          </Route>
+          <Route path="/user-profile">
+            <UserProfile />
           </Route>
         </Switch>
       )}
