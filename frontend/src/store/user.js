@@ -33,9 +33,8 @@ export const getUser = (id) => async (dispatch) => {
         const data = await res.json();
 
         console.log('THIS IS DATA IN USER STORE', data)
-
-        const { user } = data;
-        return dispatch(load(user))
+        
+        return dispatch(load(data))
     }
 }
 
@@ -45,7 +44,11 @@ export const getUser = (id) => async (dispatch) => {
 const initialState = {}
 
 const users = (state = initialState, action) => {
+    let newState;
     switch (action.type) {
+        case LOAD:
+            newState = Object.assign({}, { user: action.user });
+            return newState;
         default:
             return state;
     }
