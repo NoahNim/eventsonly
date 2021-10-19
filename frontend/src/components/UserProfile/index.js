@@ -5,7 +5,12 @@ import { getUser } from "../../store/user";
 import './UserProfile.css'
 
 function UserProfile() {
+    const { id } = useParams();
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getUser(id))
+    }, [id])
 
     return (
         <div>
