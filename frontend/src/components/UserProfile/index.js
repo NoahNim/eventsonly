@@ -21,7 +21,10 @@ function UserProfile() {
 
     return (
         <div>
-            <h1>{profileUser?.username}</h1>
+            <img alt="user" src={profileUser?.profilePhoto}></img>
+            <h2>{profileUser?.username}</h2>
+            <h3>{profileUser?.firstName} {profileUser?.lastName}</h3>
+            <p>{profileUser?.biography}</p>
         </div>
     )
 }
