@@ -21,7 +21,7 @@ function UserProfile() {
 
     return (
         <div>
-            USER PROFILE GOES HERE
+            <h1>{profileUser?.username}</h1>
         </div>
     )
 }
