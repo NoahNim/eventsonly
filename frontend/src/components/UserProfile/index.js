@@ -13,7 +13,7 @@ function UserProfile() {
         dispatch(getUser(id))
     }, [dispatch, id])
 
-    const profileUser = useSelector((state) => state.user)
+    const profileUser = useSelector((state) => state.users.user)
     
     console.log('THIS IS USER', profileUser);
 
