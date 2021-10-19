@@ -10,7 +10,7 @@ function UserProfile() {
 
     useEffect(() => {
         dispatch(getUser(id))
-    }, [id])
+    }, [dispatch, id])
 
     return (
         <div>
