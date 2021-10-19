@@ -32,6 +32,8 @@ export const getUser = (id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
 
+        console.log('THIS IS DATA IN USER STORE', data)
+
         const { user } = data;
         return dispatch(load(user))
     }

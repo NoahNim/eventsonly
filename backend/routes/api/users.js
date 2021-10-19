@@ -61,9 +61,11 @@ router.post(
 router.get('/:id', asyncHandler(async (req, res) => {
   userId = req.params.id;
 
-  const user = User.findByPk(userId);
+  const user = await User.findByPk(userId);
 
-  return res.json({ user });
+  console.log('USER IN BACKEND', user.dataValues);
+
+  return res.json( user.dataValues );
 })
 )
 
