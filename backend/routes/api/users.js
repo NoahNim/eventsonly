@@ -50,8 +50,6 @@ router.post(
     const { email, password, username, firstName, lastName, biography, profilePhoto } = req.body;
     const user = await User.signup({ email, username, password, firstName, lastName, biography, profilePhoto });
 
-    console.log('THIS IS USER POSTED ON BACKEND FUCK', user)
-
     await setTokenCookie(res, user);
 
     return res.json({

@@ -40,7 +40,6 @@ module.exports = (sequelize, DataTypes) => {
         profilePhoto,
         photo
       });
-      console.log("THIS IS USER IN MODEL AHHH", user)
       return await User.scope('currentUser').findByPk(user.id);
     };
     static associate(models) {
