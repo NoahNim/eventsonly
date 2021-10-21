@@ -19,3 +19,11 @@
     border-radius: 6px;
     object-fit: cover;
 }
+
+.profile-bio {
+   overflow-wrap: normal;
+   overflow-y: scroll;
+   overflow-x: wrap;
+   width: 30%;
+   height: auto;
+}
