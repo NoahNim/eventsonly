@@ -14,17 +14,19 @@ function UserProfile() {
     }, [dispatch, id])
 
     const profileUser = useSelector((state) => state.users.user)
-    
+
     console.log('THIS IS USER', profileUser);
 
 
 
     return (
-        <div>
-            <img alt="user" src={profileUser?.profilePhoto}></img>
-            <h2>{profileUser?.username}</h2>
-            <h3>{profileUser?.firstName} {profileUser?.lastName}</h3>
-            <p>{profileUser?.biography}</p>
+        <div className="total-user-page">
+            <div className="user-profile">
+                <img alt="user" src={profileUser?.profilePhoto} className="profile-photo"></img>
+                <h2 className="profile-username">{profileUser?.username}</h2>
+                <h3 className="profile-name">{profileUser?.firstName} {profileUser?.lastName}</h3>
+                <p className="profile-bio">{profileUser?.biography}</p>
+            </div>
         </div>
     )
 }
