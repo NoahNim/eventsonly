@@ -14,3 +14,8 @@
     align-items: center;
     width: 100%;
 }
+
+.profile-photo {
+    border-radius: 6px;
+    object-fit: cover;
+}
