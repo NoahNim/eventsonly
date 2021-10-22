@@ -86,7 +86,7 @@ router.put(":id(\\d+)/edit", requireAuth, validateSignup, asyncHandler(async (re
   
   await user.update(updatedUser);
   
-  return res.json({ user });
+  return res.json( user.dataValues );
 }))
 
 module.exports = router;

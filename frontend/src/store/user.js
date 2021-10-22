@@ -38,6 +38,29 @@ export const getUser = (id) => async (dispatch) => {
     }
 }
 
+//edit user thunk
+export const editUser = (id, user) => async (dispatch) => {
+    const { username, email, password, firstName, lastName, biography, profilePhoto } = user;
+
+    const res = await csrfFetch(`/api/users/${id}/edit`, {
+        method: "PUT",
+        body: JSON.stringify({
+            username,
+            email,
+            password,
+            firstName,
+            lastName,
+            biography,
+            profilePhoto,
+        }),
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        return dispatch(edit(data));
+    }
+}
+
 
 //REDUCER
 
@@ -48,6 +71,9 @@ const users = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             newState = Object.assign({}, { user: action.user });
+            return newState;
+        case EDIT:
+            newState = { ...state[action.user.id] }
             return newState;
         default:
             return state;
