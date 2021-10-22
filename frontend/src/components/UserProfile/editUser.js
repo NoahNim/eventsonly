@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { editUser } from "../../store/user";
 
 function UserEdit() {
     const dispatch = useDispatch();
@@ -15,7 +16,18 @@ function UserEdit() {
     const [profilePhoto, setProfilePhoto] = useState("");
     const [errors, setErrors] = useState([]);
 
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (password === confirmPassword) {
+            setErrors([]);
+            return dispatch(editUser({ email, username, password, firstName, lastName, biography, profilePhoto }))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                });
+        }
+        return setErrors(['Confirm Password field must be the same as the Password field']);
+    };
 
 
     return (
