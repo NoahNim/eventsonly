@@ -21,7 +21,7 @@ function UserEdit() {
     return (
         <>
             <div className="signup-container">
-                <h1>Sign Up</h1>
+                <h1>Edit User</h1>
                 <form className="signup-form">
                     <ul className="signup-errors">
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
