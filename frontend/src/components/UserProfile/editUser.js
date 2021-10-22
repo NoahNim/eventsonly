@@ -22,7 +22,7 @@ function UserEdit() {
         <>
             <div className="signup-container">
                 <h1>Sign Up</h1>
-                <form className="signup-form" onSubmit={handleSubmit}>
+                <form className="signup-form">
                     <ul className="signup-errors">
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
