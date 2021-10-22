@@ -27,6 +27,11 @@ function UserProfile() {
                 <h3 className="profile-name">{profileUser?.firstName} {profileUser?.lastName}</h3>
                 <p className="profile-bio">{profileUser?.biography}</p>
             </div>
+            {sessionUser?.id === profileUser?.id ? <div className="profile-buttons">
+                <button className="event-button event-edit">Edit</button>
+                <button className="event-button event-delete" >Delete</button>
+            </div>
+                : null}
         </div>
     )
 }
