@@ -69,4 +69,24 @@ router.get('/:id', asyncHandler(async (req, res) => {
 })
 )
 
+router.put(":id(\\d+)/edit", requireAuth, validateSignup, asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const user = await User.findByPk(userId);
+
+  const { email, password, username, firstName, lastName, biography, profilePhoto } = req.body;
+
+  const updatedUser = {
+    email,
+    password,
+    username, firstName,
+    lastName,
+    biography,
+    profilePhoto
+  }
+  
+  await user.update(updatedUser);
+  
+  return res.json({ user });
+}))
+
 module.exports = router;
