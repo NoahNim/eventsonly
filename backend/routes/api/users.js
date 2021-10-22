@@ -69,8 +69,8 @@ router.get('/:id', asyncHandler(async (req, res) => {
 })
 )
 
-router.put(":id(\\d+)/edit", requireAuth, validateSignup, asyncHandler(async (req, res) => {
-  const userId = req.user.id;
+router.put('/:id(\\d+)/edit', requireAuth, validateSignup, asyncHandler(async (req, res) => {
+  const userId = req.params.id;
   const user = await User.findByPk(userId);
 
   const { email, password, username, firstName, lastName, biography, profilePhoto } = req.body;

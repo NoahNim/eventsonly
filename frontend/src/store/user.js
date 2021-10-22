@@ -40,13 +40,13 @@ export const getUser = (id) => async (dispatch) => {
 
 //edit user thunk
 export const editUser = (id, user) => async (dispatch) => {
-    const { username, email, password, firstName, lastName, biography, profilePhoto } = user;
+    const { email, username, password, firstName, lastName, biography, profilePhoto } = user;
 
     const res = await csrfFetch(`/api/users/${id}/edit`, {
         method: "PUT",
         body: JSON.stringify({
-            username,
             email,
+            username,
             password,
             firstName,
             lastName,

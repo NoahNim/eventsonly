@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { editUser } from "../../store/user";
 
 function UserEdit() {
+    const { id } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("");
@@ -20,9 +21,9 @@ function UserEdit() {
         e.preventDefault();
         if (password === confirmPassword) {
             setErrors([]);
-            return dispatch(editUser({ email, username, password, firstName, lastName, biography, profilePhoto }))
+            return dispatch(editUser(id, { email, username, password, firstName, lastName, biography, profilePhoto }))
                 .catch(async (res) => {
-                    const data = await res.json();
+                    const data = await res?.json();
                     if (data && data.errors) setErrors(data.errors);
                 });
         }
@@ -34,7 +35,7 @@ function UserEdit() {
         <>
             <div className="signup-container">
                 <h1>Edit User</h1>
-                <form className="signup-form">
+                <form className="signup-form" onSubmit={handleSubmit}>
                     <ul className="signup-errors">
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
