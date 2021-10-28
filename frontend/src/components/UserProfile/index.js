@@ -28,8 +28,7 @@ function UserProfile() {
                 <p className="profile-bio">{profileUser?.biography}</p>
             </div>
             {sessionUser?.id === profileUser?.id ? <div className="profile-buttons">
-                <button className="event-button event-edit">Edit</button>
-                <button className="event-button event-delete" >Delete</button>
+                <Link to={`${profileUser.id}/edit`}><button className="event-button event-edit">Edit</button></Link>
             </div>
                 : null}
         </div>
