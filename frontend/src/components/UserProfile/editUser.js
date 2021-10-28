@@ -6,7 +6,9 @@ import { editUser } from "../../store/user";
 function UserEdit() {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
+    const profileUser = useSelector((state) => state.users.user)
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -21,11 +23,15 @@ function UserEdit() {
         e.preventDefault();
         if (password === confirmPassword) {
             setErrors([]);
-            return dispatch(editUser(id, { email, username, password, firstName, lastName, biography, profilePhoto }))
+            let res = dispatch(editUser(id, { email, username, password, firstName, lastName, biography, profilePhoto }))
                 .catch(async (res) => {
                     const data = await res?.json();
                     if (data && data.errors) setErrors(data.errors);
                 });
+            
+            if (res) {
+              return history.push(`/users/${id}`)
+            }
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
@@ -111,7 +117,7 @@ function UserEdit() {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                     />
-                    <button className="signup-button" type="submit">Sign Up</button>
+                    <button className="signup-button" type="submit">Edit User</button>
                 </form>
             </div>
         </>

@@ -22,7 +22,7 @@ function UserProfile() {
     return (
         <div className="total-user-page">
             <div className="user-profile">
-                <img alt="user" src={profileUser?.profilePhoto} className="profile-photo"></img>
+                <img alt="user" src={profileUser?.profilePhoto} className="profile-photo" height="500" width="500"></img>
                 <h2 className="profile-username">{profileUser?.username}</h2>
                 <h3 className="profile-name">{profileUser?.firstName} {profileUser?.lastName}</h3>
                 <p className="profile-bio">{profileUser?.biography}</p>
