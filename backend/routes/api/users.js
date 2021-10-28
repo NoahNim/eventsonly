@@ -13,7 +13,7 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email.')
-    .isLength({ max: 100 })  
+    .isLength({ max: 100 })
   ,
   check('username')
     .exists({ checkFalsy: true })
@@ -32,7 +32,7 @@ const validateSignup = [
   check('firstName')
     .exists({ checkFalsy: true })
     .withMessage("Please put in a first name.")
-    .isLength({  max: 100 })
+    .isLength({ max: 100 })
     .withMessage("First names can not be more than 100 characters"),
   check('lastName')
     .exists({ checkFalsy: true })
@@ -48,7 +48,7 @@ router.post(
   validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, username, firstName, lastName, biography, profilePhoto } = req.body;
-    const user = await User.signup({ email, username, password, firstName, lastName, biography, profilePhoto  });
+    const user = await User.signup({ email, username, password, firstName, lastName, biography, profilePhoto });
 
     await setTokenCookie(res, user);
 
@@ -57,5 +57,36 @@ router.post(
     });
   }),
 );
+
+router.get('/:id', asyncHandler(async (req, res) => {
+  userId = req.params.id;
+
+  const user = await User.findByPk(userId);
+
+  console.log('USER IN BACKEND', user.dataValues);
+
+  return res.json( user.dataValues );
+})
+)
+
+router.put('/:id(\\d+)/edit', requireAuth, validateSignup, asyncHandler(async (req, res) => {
+  const userId = req.params.id;
+  const user = await User.findByPk(userId);
+
+  const { email, password, username, firstName, lastName, biography, profilePhoto } = req.body;
+
+  const updatedUser = {
+    email,
+    password,
+    username, firstName,
+    lastName,
+    biography,
+    profilePhoto
+  }
+  
+  await user.update(updatedUser);
+  
+  return res.json( user.dataValues );
+}))
 
 module.exports = router;
