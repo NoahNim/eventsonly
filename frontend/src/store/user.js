@@ -67,14 +67,13 @@ export const editUser = (id, user) => async (dispatch) => {
 const initialState = {}
 
 const users = (state = initialState, action) => {
-    let newState;
     switch (action.type) {
         case LOAD:
-            newState = Object.assign({}, { user: action.user });
+            const newState = Object.assign({}, { user: action.user });
             return newState;
         case EDIT:
-            newState = { ...state[action.user.id] }
-            return newState;
+            const newewState = { ...state[action.user.id] }
+            return { ...newewState }
         default:
             return state;
     }
