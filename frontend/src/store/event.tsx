@@ -1,36 +1,40 @@
+import { LOADIPHLPAPI } from "dns";
+import { Dispatch } from "redux";
 import { csrfFetch } from "./csrf";
 
 // TYPE CONSTANTS
-const LOAD = "events/load";
+type LOAD = "events/load";
 // const LOADEVENT = "events/loadevent"
-const ADD = "events/add";
-const EDIT = "events/edit";
-const REMOVE = "events/remove";
+type ADD = "events/add";
+type EDIT = "events/edit";
+type REMOVE = "events/remove";
 
 // ACTION CREATORS
 //LOAD Events
-const load = (event) => ({
+interface load {
     type: LOAD,
-    event
-})
+    event: any
+}
 
 //ADD Event
-const add = (event) => ({
+interface add {
     type: ADD,
-    event
-})
+    event: any
+}
 
 // EDIT Event
-const edit = (event) => ({
+interface edit {
     type: EDIT,
-    event,
-})
+    event: any
+}
 
 // REMOVE Event
-const remove = (event) => ({
+interface remove {
     type: REMOVE,
-    event
-})
+    event: any
+}
+
+type Action = add | edit | remove
 
 //LOAD Event
 // const loadevent = (eventId) => ({
@@ -41,20 +45,26 @@ const remove = (event) => ({
 //THUNKS
 
 //Get events thunk
-export const getEvents = () => async (dispatch) => {
+export const getEvents = () => async (dispatch: Dispatch<Action>) => {
     const res = await fetch("/api/events/");
 
     if (res.ok) {
         const data = await res.json();
 
         const { events } = data;
-        return dispatch(load(events));
+
+        const loadData: load = {
+            type: "events/load",
+            event: events
+        }
+
+        return dispatch(loadData.event);
     }
 }
 
 //Create an event
 
-export const createEvent = (eventData) => async (dispatch) => {
+export const createEvent = (eventData: Object) => async (dispatch: Dispatch<Action>) => {
     const res = await csrfFetch("/api/events/new/", {
         method: "POST",
         headers: {
@@ -65,12 +75,18 @@ export const createEvent = (eventData) => async (dispatch) => {
 
     if (res.ok) {
         const event = await res.json();
-        return dispatch(add(event));
+
+        const addData: add = {
+            type: "events/add",
+            event: event
+        }
+
+        return dispatch(addData.event);
     }
 }
 
 //Edit Event
-export const editEvent = (id, eventData) => async (dispatch) => {
+export const editEvent = (id, eventData) => async (dispatch: Dispatch<Action>) => {
     const { name, description, date, eventPhoto, userId } = eventData;
     const res = await csrfFetch(`/api/events/${id}/edit/`, {
         method: "PUT",
@@ -87,7 +103,7 @@ export const editEvent = (id, eventData) => async (dispatch) => {
 }
 
 //Delete Event
-export const deleteEvent = (id) => async (dispatch) => {
+export const deleteEvent = (id) => async (dispatch: Dispatch<Action>) => {
     const eventRes = await csrfFetch(`/api/events/${id}/`);
     const event = await eventRes.json();
 
