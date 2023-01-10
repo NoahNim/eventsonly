@@ -13,7 +13,7 @@ import { csrfFetch } from "./csrf";
 //LOAD Events
 interface load {
     type: "events/load",
-    event: any
+    event: Object
 }
 
 //ADD Event
@@ -58,7 +58,7 @@ export const getEvents = () => async (dispatch: Dispatch<Action>) => {
             event: events
         }
 
-        return dispatch(loadData.event);
+        return dispatch(loadData);
     }
 }
 
@@ -122,8 +122,8 @@ const initialState = {}
 const events = (state = initialState, action: Action) => {
     switch (action.type) {
         case "events/load":
-            const allEvents = {}
-            action.event.forEach((event) => (allEvents[event.id] = event))
+            const allEvents: Object = {}
+            action.event.forEach((event: load["event"]) => (allEvents[event.id] = event))
             return {
                 ...allEvents,
                 ...state
