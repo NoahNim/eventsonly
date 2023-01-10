@@ -3,38 +3,38 @@ import { Dispatch } from "redux";
 import { csrfFetch } from "./csrf";
 
 // TYPE CONSTANTS
-type LOAD = "events/load";
+// type LOAD = "events/load";
 // const LOADEVENT = "events/loadevent"
-type ADD = "events/add";
-type EDIT = "events/edit";
-type REMOVE = "events/remove";
+// type ADD = "events/add";
+// type EDIT = "events/edit";
+// type REMOVE = "events/remove";
 
 // ACTION CREATORS
 //LOAD Events
 interface load {
-    type: LOAD,
+    type: "events/load",
     event: any
 }
 
 //ADD Event
 interface add {
-    type: ADD,
+    type: "events/add",
     event: any
 }
 
 // EDIT Event
 interface edit {
-    type: EDIT,
+    type: "events/edit",
     event: any
 }
 
 // REMOVE Event
 interface remove {
-    type: REMOVE,
+    type: "events/remove",
     event: any
 }
 
-type Action = add | edit | remove
+type Action = load | add | edit | remove
 
 //LOAD Event
 // const loadevent = (eventId) => ({
@@ -119,16 +119,16 @@ export const deleteEvent = (id) => async (dispatch: Dispatch<Action>) => {
 
 const initialState = {}
 
-const events = (state = initialState, action) => {
+const events = (state = initialState, action: Action) => {
     switch (action.type) {
-        case LOAD:
+        case "events/load":
             const allEvents = {}
             action.event.forEach((event) => (allEvents[event.id] = event))
             return {
                 ...allEvents,
                 ...state
             }
-        case ADD:
+        case "events/add":
             if (!state[action.event.id]) {
                 const newState = {
                     ...state,
@@ -136,10 +136,10 @@ const events = (state = initialState, action) => {
                 return newState
             }
             break;
-        case EDIT:
+        case "events/edit":
             const newState = { ...state[action.event.id] }
             return newState
-        case REMOVE:
+        case "events/remove":
             const newerState = {
                 ...state?.events?.filter((event) => event !== action.event)
             }

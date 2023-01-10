@@ -32,17 +32,25 @@ function CreateEvent() {
             userId
         }
 
-        const eventSubmit = await dispatch(createEvent(payload))
-            .catch(async (res) => {
-                const data = await res?.json();
-                setErrors(data?.errors);
-            });
+        try {
+            const eventSubmit = await dispatch(createEvent(payload))
 
-        let eventId = eventSubmit?.event?.events?.id
+            let eventId = eventSubmit?.event?.events?.id
 
-        if (eventSubmit) {
-            history.push(`/events/${eventId}`)
+            if (eventSubmit) {
+                history.push(`/events/${eventId}`)
+            }
+        } catch (errors: any) {
+            setErrors(errors);
         }
+
+        // const eventSubmit = await dispatch(createEvent(payload))
+        //     .catch(async (res) => {
+        //         const data = await res?.json();
+        //         setErrors(data?.errors);
+        //     });
+
+
     }
 
     if (sessionUser) {
@@ -61,7 +69,7 @@ function CreateEvent() {
                             type="test"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                        className="name-input"
+                            className="name-input"
                         ></input>
                     </div>
                     <div className="new-event-div">
