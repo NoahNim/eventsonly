@@ -8,13 +8,13 @@ import Navigation from './components/Navigation';
 // import { Modal } from './context/Modal';
 import Home from './components/Homepage'
 import EventsManager from './components/Events';
-import CreateEvent from './components/Events/NewEvent.jtsx';
+import CreateEvent from './components/Events/NewEvent.js';
 import Event from './components/Events/Event';
 import EditEvent from './components/Events/editEvent';
 import CreateComment from './components/Comments/NewComment';
 import EditComment from './components/Comments/EditComment';
 import Footer from './components/Footer';
-import UserProfile from './components/UserProfile';
+// import UserProfile from './components/UserProfile';
 import UserEdit from './components/UserProfile/editUser';
 
 function App() {
@@ -49,24 +49,24 @@ function App() {
           <Route path="/events" exact>
             <EventsManager />
           </Route>
-          <Route path="/events/:id/comment/new" exact>
+          {/* <Route path="/events/:id/comment/new" exact>
             <CreateComment />
           </Route>
           <Route path="/events/new" exact>
             <CreateEvent />
-          </Route>
+          </Route> */}
           <Route path="/events/:id" exact>
             <Event />
           </Route>
           <Route path="/events/:id/edit" exact>
             <EditEvent />
           </Route>
-          <Route path="/events/:eventId/comment/:id/edit" exact>
+          {/* <Route path="/events/:eventId/comment/:id/edit" exact>
             <EditComment />
-          </Route>
-          <Route path="/users/:id" exact>
+          </Route> */}
+          {/* <Route path="/users/:id" exact>
             <UserProfile />
-          </Route>
+          </Route> */}
           <Route path="/users/:id/edit" exact>
             <UserEdit />
           </Route>
