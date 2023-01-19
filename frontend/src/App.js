@@ -14,8 +14,6 @@ import EditEvent from './components/Events/editEvent';
 import CreateComment from './components/Comments/NewComment';
 import EditComment from './components/Comments/EditComment';
 import Footer from './components/Footer';
-// import UserProfile from './components/UserProfile';
-import UserEdit from './components/UserProfile/editUser';
 
 function App() {
   const dispatch = useDispatch();
@@ -63,12 +61,6 @@ function App() {
           </Route>
           <Route path="/events/:eventId/comment/:id/edit" exact>
             <EditComment />
-          </Route>
-          <Route path="/users/:id" exact>
-            <UserProfile />
-          </Route>
-          <Route path="/users/:id/edit" exact>
-            <UserEdit />
           </Route>
         </Switch>
       )}
