@@ -1,7 +1,7 @@
 # Events Only
 
 ## About
-Events Only is a fullstack web application for creating, viewing, and commenting on upcoming events. It uses React and NodeJS/Express to accomplsh this goal. The live site is hosted here: https://events-only.herokuapp.com/
+Events Only is a fullstack web application for creating, viewing, and commenting on upcoming events. It uses React and NodeJS/Express to accomplsh this goal. The live site is hosted here: 
 
 
 ## At a Glance
